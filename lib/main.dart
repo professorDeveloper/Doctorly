@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                 useMaterial3: false,
               ),
               home: token != null && token.isNotEmpty
-                  ? const MainScreen()
+                  ? const MainScreen() 
                   : const IntroductionScreen(),
             );
           } else {

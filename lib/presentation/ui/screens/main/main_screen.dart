@@ -75,447 +75,449 @@ class _MainScreenState extends State<MainScreen> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                gradient: LinearGradient(colors: [
-                  Color(0x3316a1e7),
-                  Color(0x3383ffb2),
-                  Color(0x33ef8989)
-                ])),
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            height: 120,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 18,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 18,
-                    ),
-                    Text(
-                      "Diqqat! Super chegirma!",
-                      style: AppStyle.sfproDisplay18Black.copyWith(
-                          color: AppColor.Black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      height: 11,
-                    ),
-                    Expanded(
-                      child: RichText(
-                        text: const TextSpan(
-                          text: 'Birinchi tibbiy hodim chaqiriviga',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black,
-                          ),
-                          children: [
-                            WidgetSpan(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 2, right: 2),
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(4)),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 3, vertical: 2),
-                                    child: Text(
-                                      '50%',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  gradient: LinearGradient(colors: [
+                    Color(0x3316a1e7),
+                    Color(0x3383ffb2),
+                    Color(0x33ef8989)
+                  ])),
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              height: 120,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 18,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 18,
+                      ),
+                      Text(
+                        "Diqqat! Super chegirma!",
+                        style: AppStyle.sfproDisplay18Black.copyWith(
+                            color: AppColor.Black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(
+                        height: 11,
+                      ),
+                      Expanded(
+                        child: RichText(
+                          text: const TextSpan(
+                            text: 'Birinchi tibbiy hodim chaqiriviga',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              WidgetSpan(
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 2, right: 2),
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(4)),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 3, vertical: 2),
+                                      child: Text(
+                                        '50%',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            TextSpan(
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.black,
+                              TextSpan(
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                ),
+                                text: '\nchegirmaga ega bo’ling!',
                               ),
-                              text: '\nchegirmaga ega bo’ling!',
-                            ),
-                          ],
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                      child: Image(
+                    image: AssetImage(AppImages.discount),
+                  )),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14.0),
+              child: Text(
+                "Bizning Xizmatlar",
+                style: AppStyle.sfProDisplay22w600.copyWith(fontSize: 20),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 14,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 200,
+                        decoration: BoxDecoration(
+                            color: AppColor.Gray1,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image(
+                          image: AssetImage(AppImages.tezyordam),
+                          width: 100,
+                          height: 80,
                         ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Tez yordam chaqirish",
+                        style: AppStyle.sfproDisplay14w400Black
+                            .copyWith(fontSize: 12),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   width: 20,
                 ),
                 Expanded(
-                    child: Image(
-                  image: AssetImage(AppImages.discount),
-                )),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14.0),
-            child: Text(
-              "Bizning Xizmatlar",
-              style: AppStyle.sfProDisplay22w600.copyWith(fontSize: 20),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 14,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 200,
-                      decoration: BoxDecoration(
-                          color: AppColor.Gray1,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Image(
-                        image: AssetImage(AppImages.tezyordam),
-                        width: 100,
-                        height: 80,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Tez yordam chaqirish",
-                      style: AppStyle.sfproDisplay14w400Black
-                          .copyWith(fontSize: 12),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 200,
-                      decoration: BoxDecoration(
-                          color: AppColor.Gray1,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Image(
-                        image: AssetImage(AppImages.vrachpic),
-                        width: 100,
-                        height: 80,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Vrachni chaqirish",
-                      style: AppStyle.sfproDisplay14w400Black
-                          .copyWith(fontSize: 12),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 14,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 14,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 200,
-                      decoration: BoxDecoration(
-                          color: AppColor.Gray1,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Image(
-                        image: AssetImage(AppImages.psixolog),
-                        width: 100,
-                        height: 80,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Psixolog ko’rigi",
-                      style: AppStyle.sfproDisplay14w400Black
-                          .copyWith(fontSize: 12),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 200,
-                      decoration: BoxDecoration(
-                          color: AppColor.Gray1,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Image(
-                        image: AssetImage(AppImages.tibbiyhodim),
-                        width: 100,
-                        height: 80,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Tibbiy hodim chaqirish",
-                      style: AppStyle.sfproDisplay14w400Black
-                          .copyWith(fontSize: 12),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 14,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 14,
-              ),
-              Expanded(
-                  flex: 6,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Column(children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColor.Gray1,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image(
-                                      image: AssetImage(AppImages.massaj),
-                                      width: 80,
-                                    ),
-                                  )),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Massaj",
-                                style: AppStyle.sfproDisplay14w400Black
-                                    .copyWith(fontSize: 12),
-                              )
-                            ]),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Expanded(
-                            child: Column(children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColor.Gray1,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image(
-                                      image: AssetImage(AppImages.labaratory),
-                                      width: 80,
-                                    ),
-                                  )),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Laboratoriya",
-                                style: AppStyle.sfproDisplay14w400Black
-                                    .copyWith(fontSize: 12),
-                              )
-                            ]),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Column(children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColor.Gray1,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image(
-                                      image: AssetImage(AppImages.hospitals),
-                                      width: 80,
-                                    ),
-                                  )),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Klinikalar",
-                                style: AppStyle.sfproDisplay14w400Black
-                                    .copyWith(fontSize: 12),
-                              )
-                            ]),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Expanded(
-                            child: Column(children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColor.Gray1,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image(
-                                      image: AssetImage(AppImages.topshifokor),
-                                      width: 80,
-                                    ),
-                                  )),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                textAlign: TextAlign.center,
-                                "Shifokor ko’rigiga yozilish",
-                                style: AppStyle.sfproDisplay14w400Black
-                                    .copyWith(fontSize: 12),
-                              )
-                            ]),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                flex: 4,
-                child: Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 3),
+                      Container(
+                        width: 200,
                         decoration: BoxDecoration(
                             color: AppColor.Gray1,
                             borderRadius: BorderRadius.circular(20)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              SizedBox(height:15 ,),
-                              RichText(
-                                text:  const TextSpan(
-                                  text: 'Oilaviy shifokor bilan',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    WidgetSpan(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 2, right: 2),
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                            color: AppColor.BlueMain,
-                                            borderRadius:
-                                            BorderRadius.all(Radius.circular(4)),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 3, vertical: 2),
-                                            child: Text(
-                                              '50%',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
+                        child: Image(
+                          image: AssetImage(AppImages.vrachpic),
+                          width: 100,
+                          height: 80,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Vrachni chaqirish",
+                        style: AppStyle.sfproDisplay14w400Black
+                            .copyWith(fontSize: 12),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 14,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 14,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 200,
+                        decoration: BoxDecoration(
+                            color: AppColor.Gray1,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image(
+                          image: AssetImage(AppImages.psixolog),
+                          width: 100,
+                          height: 80,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Psixolog ko’rigi",
+                        style: AppStyle.sfproDisplay14w400Black
+                            .copyWith(fontSize: 12),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 200,
+                        decoration: BoxDecoration(
+                            color: AppColor.Gray1,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image(
+                          image: AssetImage(AppImages.tibbiyhodim),
+                          width: 100,
+                          height: 80,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Tibbiy hodim chaqirish",
+                        style: AppStyle.sfproDisplay14w400Black
+                            .copyWith(fontSize: 12),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 14,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 14,
+                ),
+                Expanded(
+                    flex: 6,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColor.Gray1,
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image(
+                                        image: AssetImage(AppImages.massaj),
+                                        width: 80,
+                                      ),
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Massaj",
+                                  style: AppStyle.sfproDisplay14w400Black
+                                      .copyWith(fontSize: 12),
+                                )
+                              ]),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                              child: Column(children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColor.Gray1,
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image(
+                                        image: AssetImage(AppImages.labaratory),
+                                        width: 80,
+                                      ),
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Laboratoriya",
+                                  style: AppStyle.sfproDisplay14w400Black
+                                      .copyWith(fontSize: 12),
+                                )
+                              ]),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColor.Gray1,
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image(
+                                        image: AssetImage(AppImages.hospitals),
+                                        width: 80,
+                                      ),
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Klinikalar",
+                                  style: AppStyle.sfproDisplay14w400Black
+                                      .copyWith(fontSize: 12),
+                                )
+                              ]),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                              child: Column(children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColor.Gray1,
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image(
+                                        image: AssetImage(AppImages.topshifokor),
+                                        width: 80,
+                                      ),
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  "Shifokor ko’rigiga yozilish",
+                                  style: AppStyle.sfproDisplay14w400Black
+                                      .copyWith(fontSize: 12),
+                                )
+                              ]),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 3),
+                          decoration: BoxDecoration(
+                              color: AppColor.Gray1,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                SizedBox(height:15 ,),
+                                RichText(
+                                  text:  const TextSpan(
+                                    text: 'Oilaviy shifokor bilan',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                    ),
+                                    children: [
+                                      WidgetSpan(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 2, right: 2),
+                                          child: DecoratedBox(
+                                            decoration: BoxDecoration(
+                                              color: AppColor.BlueMain,
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(4)),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 3, vertical: 2),
+                                              child: Text(
+                                                '50%',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.black,
+                                      TextSpan(
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                        ),
+                                        text: 'konsultasiya',
                                       ),
-                                      text: 'konsultasiya',
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 10,),
+                                SizedBox(height: 10,),
 
-                              Image(
-                                height: 180,
-                                fit: BoxFit.cover,
-                                image: AssetImage(AppImages.consulation),
-                              ),
-                              SizedBox(height: 1,),
-                            ],
-                          ),
-                        )),
-                  ],
+                                Image(
+                                  height: 180,
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(AppImages.consulation),
+                                ),
+                                SizedBox(height: 1,),
+                              ],
+                            ),
+                          )),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 14,
-              ),
-            ],
-          )
-        ],
+                SizedBox(
+                  width: 14,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
       // appBar: ,
       // body: ,
