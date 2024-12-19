@@ -18,4 +18,9 @@ static const String tezyordam='assets/images/tezyordam.png';
 static const String psixolog='assets/images/psixolog.png';
 static const String vrachpic='assets/images/vrachpic.png';
 static const String tibbiyhodim='assets/images/tibbiyhodim.png';
+static const String consulation='assets/images/consulation.png';
+static const String hospitals='assets/images/hospitals.png';
+static const String labaratory='assets/images/labaratory.png';
+static const String topshifokor='assets/images/topshifokor.png';
+static const String massaj='assets/images/massaj.png';
 }

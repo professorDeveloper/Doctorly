@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
               ),
               home: token != null && token.isNotEmpty
                   ? const MainScreen()
-                  : const MainScreen(),
+                  : const IntroductionScreen(),
             );
           } else {
             return CircularProgressIndicator();

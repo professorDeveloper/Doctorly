@@ -8,8 +8,12 @@ class Assets {
   static const String fontsSfProDisplayRegular = 'assets/fonts/Sf-Pro-Display-Regular.OTF';
   static const String iconsMenu = 'assets/icons/menu.svg';
   static const String iconsNotification = 'assets/icons/notification.svg';
+  static const String imagesConsulation = 'assets/images/consulation.png';
   static const String imagesDiscount = 'assets/images/discount.png';
+  static const String imagesHospitals = 'assets/images/hospitals.png';
+  static const String imagesLabaratory = 'assets/images/labaratory.png';
   static const String imagesLoginpic = 'assets/images/loginpic.png';
+  static const String imagesMassaj = 'assets/images/massaj.png';
   static const String imagesOnboardbg = 'assets/images/onboardbg.svg';
   static const String imagesOnboarding1 = 'assets/images/onboarding1.png';
   static const String imagesOnboarding2 = 'assets/images/onboarding2.png';
@@ -17,6 +21,8 @@ class Assets {
   static const String imagesOnboarding4 = 'assets/images/onboarding4.png';
   static const String imagesPsixolog = 'assets/images/psixolog.png';
   static const String imagesTezyordam = 'assets/images/tezyordam.png';
+  static const String imagesTibbiyhodim = 'assets/images/tibbiyhodim.png';
+  static const String imagesTopshifokor = 'assets/images/topshifokor.png';
   static const String imagesVerifyicon = 'assets/images/verifyicon.png';
   static const String imagesVrachpic = 'assets/images/vrachpic.png';
 
