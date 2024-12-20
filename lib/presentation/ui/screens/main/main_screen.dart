@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/app_color.dart';
 import '../../../../core/constants/app_style.dart';
+import '../../helpers/drawer_item.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,9 +15,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: AppColor.White,
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -26,7 +30,9 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                scaffoldKey.currentState?.openDrawer();
+              },
               child: Container(
                 child: SvgPicture.asset(AppImages.menu),
               ),
@@ -74,6 +80,72 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: Device.get().isAndroid?35:50,),
+            Row(
+              children: [
+                SizedBox(width: 12,),
+                SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: CircleAvatar(
+                      backgroundColor: AppColor.Gray2,
+                      backgroundImage: NetworkImage("https://avatars.githubusercontent.com/u/108933534?v=4"),
+                    )),
+                SizedBox(width: 12,),
+                Column(
+                  children: [
+                    Text("Eshonov Fakhriyor",style: AppStyle.sfproDisplay16Black.copyWith(
+                      fontWeight: FontWeight.w600
+                    ),),
+                    Text("+998 97 628 28 82",style: AppStyle.sfproDisplay14w400Black.copyWith(
+                      color: AppColor.Gray5
+                    ),)
+                  ],
+                )
+              ],
+            ),
+            Divider(),
+            Expanded(
+              child: ListView(
+                children: [
+                  buildMenuItem(Icons.history, 'Buyurtmalar tarixi'),
+                  buildMenuItem(Icons.person, 'Mening konsultatsiyalarim'),
+                  buildMenuItem(Icons.card_membership, 'Tibbiy kartalar'),
+                  buildMenuItem(Icons.headset, 'Biz bilan bog\'lanish'),
+                  buildMenuItem(Icons.share, 'Ulashish'),
+                  buildMenuItem(Icons.star, 'Ilovani baholash'),
+                  buildMenuItem(
+                    Icons.language,
+                    'Ilova tili',
+                    trailing: Text(
+                      'O\'zbekcha',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  buildMenuItem(Icons.privacy_tip, 'Maxfiylik siyosati'),
+                ],
+              ),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextButton(
+                onPressed: () {
+                  // Add logout functionality
+                },
+                child: Text(
+                  'Tizimdan chiqish',
+                  style: TextStyle(color: AppColor.Gray5, fontSize: 14),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -189,10 +261,11 @@ class _MainScreenState extends State<MainScreen> {
                   width: 14,
                 ),
                 Expanded(
+                  flex:5,
                   child: Column(
                     children: [
                       Container(
-                        width: 200,
+                        width: double.infinity,
                         decoration: BoxDecoration(
                             color: AppColor.Gray1,
                             borderRadius: BorderRadius.circular(20)),
@@ -207,6 +280,75 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       Text(
                         "Tez yordam chaqirish",
+                        style: AppStyle.sfproDisplay14w400Black
+                            .copyWith(fontSize: 12),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  flex:5,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 200,
+                        decoration: BoxDecoration(
+                            color: AppColor.Gray1,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image(
+                          image: AssetImage(AppImages.tibbiyhodim),
+                          width: 100,
+                          height: 80,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Tibbiy hodim chaqirish",
+                        style: AppStyle.sfproDisplay14w400Black
+                            .copyWith(fontSize: 12),
+                      )
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  width: 14,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 14,
+                ),
+
+                Expanded(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 200,
+                        decoration: BoxDecoration(
+                            color: AppColor.Gray1,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image(
+                          image: AssetImage(AppImages.psixolog),
+                          width: 100,
+                          height: 80,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Psixolog ko’rigi",
                         style: AppStyle.sfproDisplay14w400Black
                             .copyWith(fontSize: 12),
                       )
@@ -255,72 +397,6 @@ class _MainScreenState extends State<MainScreen> {
                   width: 14,
                 ),
                 Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 200,
-                        decoration: BoxDecoration(
-                            color: AppColor.Gray1,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Image(
-                          image: AssetImage(AppImages.psixolog),
-                          width: 100,
-                          height: 80,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Psixolog ko’rigi",
-                        style: AppStyle.sfproDisplay14w400Black
-                            .copyWith(fontSize: 12),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 200,
-                        decoration: BoxDecoration(
-                            color: AppColor.Gray1,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Image(
-                          image: AssetImage(AppImages.tibbiyhodim),
-                          width: 100,
-                          height: 80,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Tibbiy hodim chaqirish",
-                        style: AppStyle.sfproDisplay14w400Black
-                            .copyWith(fontSize: 12),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 14,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 14,
-                ),
-                Expanded(
                     flex: 6,
                     child: Column(
                       children: [
@@ -331,7 +407,8 @@ class _MainScreenState extends State<MainScreen> {
                                 Container(
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -357,7 +434,8 @@ class _MainScreenState extends State<MainScreen> {
                                 Container(
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -387,7 +465,8 @@ class _MainScreenState extends State<MainScreen> {
                                 Container(
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -413,11 +492,13 @@ class _MainScreenState extends State<MainScreen> {
                                 Container(
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
-                                        image: AssetImage(AppImages.topshifokor),
+                                        image:
+                                            AssetImage(AppImages.topshifokor),
                                         width: 80,
                                       ),
                                     )),
@@ -444,19 +525,22 @@ class _MainScreenState extends State<MainScreen> {
                   child: Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 3),
+                          margin: EdgeInsets.symmetric(vertical: 3),
                           decoration: BoxDecoration(
                               color: AppColor.Gray1,
                               borderRadius: BorderRadius.circular(20)),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                SizedBox(height:15 ,),
+                                SizedBox(
+                                  height: 15,
+                                ),
                                 RichText(
-                                  text:  const TextSpan(
+                                  text: const TextSpan(
                                     text: 'Oilaviy shifokor bilan',
                                     style: TextStyle(
                                       fontSize: 12,
@@ -465,12 +549,13 @@ class _MainScreenState extends State<MainScreen> {
                                     children: [
                                       WidgetSpan(
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: 2, right: 2),
+                                          padding: EdgeInsets.only(
+                                              left: 2, right: 2),
                                           child: DecoratedBox(
                                             decoration: BoxDecoration(
                                               color: AppColor.BlueMain,
-                                              borderRadius:
-                                              BorderRadius.all(Radius.circular(4)),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(4)),
                                             ),
                                             child: Padding(
                                               padding: EdgeInsets.symmetric(
@@ -497,14 +582,17 @@ class _MainScreenState extends State<MainScreen> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 10,),
-
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Image(
-                                  height: 180,
+                                  height: 200,
                                   fit: BoxFit.cover,
                                   image: AssetImage(AppImages.consulation),
                                 ),
-                                SizedBox(height: 1,),
+                                SizedBox(
+                                  height: 1,
+                                ),
                               ],
                             ),
                           )),
@@ -515,7 +603,10 @@ class _MainScreenState extends State<MainScreen> {
                   width: 14,
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

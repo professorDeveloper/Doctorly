@@ -45,12 +45,11 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
-
             end: Alignment.bottomCenter,
             colors: [
               Color(0xffacd0f8),
-              Color(0x71c3dafa),
-              Color(0xffedf2f8),
+              Color(0x71d0e0f6),
+              Color(0xffffffff),
             ],
           ),
         ),
@@ -84,7 +83,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                                 0.1, // Padding based on screen size
                           ),
                           Image.asset(
-                            height: Device.get().isAndroid?320:340,
+                            height: Device.get().isAndroid ? 320 : 340,
                             width: double.infinity,
                             contents[i].image,
                           ),
@@ -127,7 +126,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               direction: FadeSlideDirection.btt,
               duration: 0.8,
               child: Container(
-                height: Device.get().isAndroid?55:57,
+                height: Device.get().isAndroid ? 55 : 57,
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 width: double.infinity,
                 child: MaterialButton(
@@ -150,16 +149,19 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: currentIndex == contents.length - 1
-                      ?  Text("Boshlash")
-                      :  Row(
-                        children: [
-                          Spacer(),
-                          Text("Keyingisi"),
-                          Spacer(),
-                          Icon(Icons.arrow_forward,color: Colors.white,size: 24,)
-
-                        ],
-                      ),
+                      ? Text("Boshlash")
+                      : Row(
+                          children: [
+                            Spacer(),
+                            Text("Keyingisi"),
+                            Spacer(),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                              size: 24,
+                            )
+                          ],
+                        ),
                 ),
               ),
             ),
@@ -167,11 +169,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             CustomAnimationsSlide(
               direction: FadeSlideDirection.btt,
               duration: 0.8,
-
-              child: InkWell(
-                onTap: (){
+              child: TextButton(
+                onPressed: () {
                   openScreen(context, LoginScreen());
-
                 },
                 child: Text(
                   "O’tkazib yuborish",
@@ -180,7 +180,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               ),
             ),
             SizedBox(
-              height: Device.get().isAndroid?30:50,
+              height: Device.get().isAndroid ? 30 : 50,
             ),
           ],
         ),

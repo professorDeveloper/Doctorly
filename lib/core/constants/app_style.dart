@@ -30,5 +30,7 @@ class AppStyle {
 
   static TextStyle sfproDisplay14w400Black = TextStyle(
       fontFamily: 'SfProDisplay',fontSize: 14, color: AppColor.Black,fontWeight: FontWeight.w400);
+  static TextStyle sfproDisplay14w400Gray5 = TextStyle(
+      fontFamily: 'SfProDisplay',fontSize: 14, color: AppColor.Gray5,fontWeight: FontWeight.w400);
 
 }
