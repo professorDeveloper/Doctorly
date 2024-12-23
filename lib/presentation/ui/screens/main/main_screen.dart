@@ -1,11 +1,20 @@
+import 'dart:convert';
+
 import 'package:doctorly/core/constants/app_images.dart';
+import 'package:doctorly/navigator/navigator.dart';
+import 'package:doctorly/presentation/ui/screens/location_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/constants/app_color.dart';
 import '../../../../core/constants/app_style.dart';
 import '../../helpers/drawer_item.dart';
+import 'package:http/http.dart' as http;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,9 +22,24 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+bool isCyrillic(String text) {
+  final cyrillicRegex = RegExp(r'[\u0400-\u04FF]'); // Cyrillic characters range
+  return cyrillicRegex.hasMatch(text);
+}
+
 
 class _MainScreenState extends State<MainScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
+  Map<String, String>? locationDetails;
+
+  @override
+  void initState() {
+    super.initState();
+    // Using addPostFrameCallback to ensure it's executed after the first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      fetchLocationDetails();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +72,29 @@ class _MainScreenState extends State<MainScreen> {
                   SizedBox(
                     width: 12,
                   ),
-                  Text(
-                    "Toshkent Sh, Chilonzor Tumani...",
-                    style: AppStyle.sfproDisplay16Nonormal.copyWith(
+                  GestureDetector(
+                    onTap: () {
+                      openScreen(context, CurrentLocationScreen());
+                    },
+
+                    child: locationDetails == null
+                        ? Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!, // Light base color
+                      highlightColor: Colors.grey[100]!, // Light highlight color
+                      child: Container(
+                        width: 200, // Make the shimmer effect the same width as your text
+                        height: 20, // Adjust height according to the text size
+                        color: Colors.white, // Color of the shimmer placeholder
+                      ),
+                    ) // Shimmer effect while loading
+                        : Text(
+                      locationDetails!['formatted_address']??"qweqweqwew",
+                      style: AppStyle.sfproDisplay16Nonormal.copyWith(
                         fontSize: 12,
                         color: Colors.black,
-                        fontWeight: FontWeight.w400),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
                   SizedBox(
                     width: 5,
@@ -85,7 +126,9 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: Device.get().isAndroid?35:50,),
+            SizedBox(height: Device
+                .get()
+                .isAndroid ? 35 : 50,),
             Row(
               children: [
                 SizedBox(width: 12,),
@@ -94,17 +137,20 @@ class _MainScreenState extends State<MainScreen> {
                     width: 60,
                     child: CircleAvatar(
                       backgroundColor: AppColor.Gray2,
-                      backgroundImage: NetworkImage("https://avatars.githubusercontent.com/u/108933534?v=4"),
+                      backgroundImage: NetworkImage(
+                          "https://avatars.githubusercontent.com/u/108933534?v=4"),
                     )),
                 SizedBox(width: 12,),
                 Column(
                   children: [
-                    Text("Eshonov Fakhriyor",style: AppStyle.sfproDisplay16Black.copyWith(
-                      fontWeight: FontWeight.w600
-                    ),),
-                    Text("+998 97 628 28 82",style: AppStyle.sfproDisplay14w400Black.copyWith(
-                      color: AppColor.Gray5
-                    ),)
+                    Text("Eshonov Fakhriyor",
+                      style: AppStyle.sfproDisplay16Black.copyWith(
+                          fontWeight: FontWeight.w600
+                      ),),
+                    Text("+998 97 628 28 82",
+                      style: AppStyle.sfproDisplay14w400Black.copyWith(
+                          color: AppColor.Gray5
+                      ),)
                   ],
                 )
               ],
@@ -202,7 +248,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                       color: Colors.red,
                                       borderRadius:
-                                          BorderRadius.all(Radius.circular(4)),
+                                      BorderRadius.all(Radius.circular(4)),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
@@ -237,8 +283,8 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Expanded(
                       child: Image(
-                    image: AssetImage(AppImages.discount),
-                  )),
+                        image: AssetImage(AppImages.discount),
+                      )),
                 ],
               ),
             ),
@@ -261,7 +307,7 @@ class _MainScreenState extends State<MainScreen> {
                   width: 14,
                 ),
                 Expanded(
-                  flex:5,
+                  flex: 5,
                   child: Column(
                     children: [
                       Container(
@@ -290,7 +336,7 @@ class _MainScreenState extends State<MainScreen> {
                   width: 20,
                 ),
                 Expanded(
-                  flex:5,
+                  flex: 5,
                   child: Column(
                     children: [
                       Container(
@@ -408,7 +454,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -435,7 +481,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -466,7 +512,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -493,12 +539,12 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
                                         image:
-                                            AssetImage(AppImages.topshifokor),
+                                        AssetImage(AppImages.topshifokor),
                                         width: 80,
                                       ),
                                     )),
@@ -531,7 +577,7 @@ class _MainScreenState extends State<MainScreen> {
                               borderRadius: BorderRadius.circular(20)),
                           child: Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -614,5 +660,79 @@ class _MainScreenState extends State<MainScreen> {
       // body: ,
       //lala
     );
+  }
+
+
+
+  Future<void> fetchLocationDetails() async {
+    // Check and request location permission
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Location permission denied.'),
+      ));
+      return;
+    }
+
+    locationDetails = await getCurrentLocationDetails();
+    setState(() {}); // Update the UI after fetching location details
+
+
+  }
+  Future<Map<String, String>> getCurrentLocationDetails() async {
+    try {
+      // Get the current location using Geolocator
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+
+      // Google Geocoding API URL
+      String apiKey = "AIzaSyDlyelUlpPGiEtnNjZmTi002Ce0ezXyVi8"; // Replace with your actual Google API key
+      String url =
+          'https://maps.googleapis.com/maps/api/geocode/json?latlng=${position
+          .latitude},${position.longitude}&key=$apiKey';
+
+      // Fetch the data from Google Geocoding API
+      var response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        print(data);
+        if (data['results'].isNotEmpty) {
+          var addressComponents = data['results'][0]['address_components'];
+          var formattedAddress = data['results'][0]['formatted_address'];
+
+          // Extract city (locality), district (tuman), and street (ko‘cha)
+          String city = '';
+          String district = '';
+          String street = '';
+
+          for (var component in addressComponents) {
+            if (component['types'].contains('locality')) {
+              city = component['long_name'];
+            }
+            if (component['types'].contains('sublocality_level_1') ||
+                component['types'].contains('administrative_area_level_2')) {
+              district = component['long_name'];
+            }
+            if (component['types'].contains('route')) {
+              street = component['long_name'];
+            }
+          }
+
+          return {
+            'city': city.isNotEmpty ? city : 'City not found',
+            'district': district.isNotEmpty ? district : 'District not found',
+            'address': formattedAddress,
+            'street': street.isNotEmpty ? street : 'Street not found',
+          };
+        } else {
+          throw Exception('No address found for the current location.');
+        }
+      } else {
+        throw Exception('Failed to fetch location details from Google Maps.');
+      }
+    } catch (e) {
+      throw Exception('Error fetching location details: $e');
+    }
   }
 }

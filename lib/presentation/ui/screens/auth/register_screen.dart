@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
   }
 
@@ -64,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           width: double.infinity,
           child: MaterialButton(
             color: AppColor.Green,
-            onPressed: () async {
+            onPressed: ()  {
               openScreen(context, MainScreen());
             },
             elevation: 0,
