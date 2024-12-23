@@ -1,6 +1,7 @@
 import 'package:doctorly/core/constants/app_color.dart';
 import 'package:doctorly/presentation/ui/screens/auth/register_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/verify_screen.dart';
+import 'package:doctorly/presentation/ui/screens/location_page.dart';
 import 'package:doctorly/presentation/ui/screens/main/main_screen.dart';
 import 'package:doctorly/presentation/ui/screens/onboarding/introduction_screen.dart';
 import 'package:doctorly/utils/my_pref.dart';
@@ -47,8 +48,8 @@ class MyApp extends StatelessWidget {
                 useMaterial3: false,
               ),
               home: token != null && token.isNotEmpty
-                  ? const MainScreen() 
-                  : const MainScreen(),
+                  ?  MainScreen()
+                  :  MainScreen(),
             );
           } else {
             return CircularProgressIndicator();

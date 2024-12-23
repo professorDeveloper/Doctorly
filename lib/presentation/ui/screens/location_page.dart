@@ -1,7 +1,9 @@
 import 'package:doctorly/core/constants/app_color.dart';
+import 'package:doctorly/core/constants/app_images.dart';
 import 'package:doctorly/core/constants/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -16,8 +18,10 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
   GoogleMapController? _mapController;
   LatLng _currentPosition = LatLng(41.2995, 69.2401); // Tashkent as default
   bool _isLoading = true;
+  var current = 0;
+  var currentitem = 0;
 
-   Map<String, String> locationDetails={};
+  Map<String, String> locationDetails = {};
 
   @override
   void initState() {
@@ -59,7 +63,6 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
           CameraPosition(target: _currentPosition, zoom: 14.0),
         ),
       );
-
     } catch (e) {
       setState(() {
         _isLoading = false;
@@ -69,6 +72,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
       ));
     }
   }
+
   Future<void> fetchLocationDetails() async {
     // Check and request location permission
     LocationPermission permission = await Geolocator.requestPermission();
@@ -95,12 +99,15 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           GoogleMap(
-            onTap: (coordinates) async{
-              _currentPosition=coordinates;
-              await fetchLocationDetails();
-              setState(() {
+            onTap: (coordinates) async {
+              Position position = await Geolocator.getCurrentPosition(
+                  desiredAccuracy: LocationAccuracy.high);
+              locationDetails = await getCurrentLocationDetails();
+              print(locationDetails);
 
-              });
+              _currentPosition = coordinates;
+              await fetchLocationDetails();
+              setState(() {});
             },
             zoomControlsEnabled: false,
             // Disable zoom buttons
@@ -119,7 +126,6 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                 markerId: MarkerId('currentLocation'),
                 position: _currentPosition,
               ),
-
             },
           ),
           DraggableScrollableSheet(
@@ -148,8 +154,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                         top: 15,
                       ),
                       child: Text('Kichik tibbiy hodim chaqirish',
-                          style: AppStyle.sfproDisplay18Black
-                              .copyWith(fontWeight: FontWeight.w500,fontSize: 16)),
+                          style: AppStyle.sfproDisplay18Black.copyWith(
+                              fontWeight: FontWeight.w500, fontSize: 16)),
                     ),
                     SizedBox(
                       height: 16,
@@ -158,33 +164,192 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                       width: double.infinity,
                       margin: EdgeInsets.symmetric(horizontal: 12),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
-                        color: Color(0xffF0F6FE)
-                      ),
+                          borderRadius: BorderRadius.circular(14),
+                          color: Color(0xffF0F6FE)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 14.0),
                         child: Row(
                           children: [
-                            SizedBox(width: 14,),
+                            SizedBox(
+                              width: 14,
+                            ),
                             Icon(
                               Icons.location_on,
                               color: AppColor.Black,
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                               child: Text(
-
                                 maxLines: 1,
                                 '${locationDetails!['city']}, ${locationDetails!['address']}',
-                                style: AppStyle.sfproDisplay16Black.copyWith(fontSize: 15.5,overflow: TextOverflow.ellipsis),
+                                style: AppStyle.sfproDisplay16Black.copyWith(
+                                    fontSize: 15.5,
+                                    overflow: TextOverflow.ellipsis),
                               ),
                             ),
-                            SizedBox(width: 10,),
-
+                            SizedBox(
+                              width: 10,
+                            ),
                           ],
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.Gray1,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 12),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    current = 0;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: current == 0
+                                        ? AppColor.White
+                                        : AppColor.Gray1,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0),
+                                    child: Center(
+                                      child: Text(
+                                        "Farqi yo’q",
+                                        style: AppStyle.sfproDisplay14w400Black,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    current = 1;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: current == 1
+                                        ? AppColor.White
+                                        : AppColor.Gray1,
+                                  ),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SvgPicture.asset(AppImages.maleIcon),
+                                          Text(
+                                            "Erkak",
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    current = 2;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: current == 2
+                                        ? AppColor.White
+                                        : AppColor.Gray1,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0),
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SvgPicture.asset(
+                                              AppImages.femaleIcon),
+                                          Text(
+                                            "Ayol",
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Container(
+                      height: 120,
+                      child: ListView.builder(
+                        itemCount: 6,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 4),
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppColor.Gray1,
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          child: Column(
+                            children: [
+                              SvgPicture.asset(AppImages.kapelIcon),
+                              SizedBox(height: 8,),
+                              Text("Kapelnisa",style: AppStyle.sfproDisplay14w400Black,),
+                              SizedBox(height: 4,),
+                              Text("100 000 сум",style: AppStyle.sfproDisplay14w400Black.copyWith(
+                                fontWeight: FontWeight.w500
+                              ),)
+                            ],
+                          ),
+                        );
+                      }),
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
                   ],
                 ),
               );
