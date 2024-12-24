@@ -7,7 +7,6 @@ class Assets {
   static const String fontsSfProDisplayMedium = 'assets/fonts/Sf-Pro-Display-Medium.OTF';
   static const String fontsSfProDisplayRegular = 'assets/fonts/Sf-Pro-Display-Regular.OTF';
   static const String iconsFemale = 'assets/icons/female.svg';
-  static const String iconsFrame 29 = 'assets/icons/kapel.svg';
   static const String iconsMale = 'assets/icons/male.svg';
   static const String iconsMenu = 'assets/icons/menu.svg';
   static const String iconsNotification = 'assets/icons/notification.svg';
