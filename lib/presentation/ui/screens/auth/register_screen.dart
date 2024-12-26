@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           margin:  EdgeInsets.symmetric(horizontal: 20,vertical:Device.get().isAndroid?30:40),
           width: double.infinity,
           child: MaterialButton(
-            color: AppColor.Green,
+            color: AppColor.BlueMain,
             onPressed: ()  {
               openScreen(context, MainScreen());
             },

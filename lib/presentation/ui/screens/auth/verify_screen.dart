@@ -10,7 +10,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../core/constants/app_color.dart';
 
 class VerifyScreen extends StatefulWidget {
-  const VerifyScreen({super.key});
+   VerifyScreen({required this.phone});
+   String phone;
 
   @override
   State<VerifyScreen> createState() => _VerifyScreenState();

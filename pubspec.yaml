@@ -40,11 +40,13 @@ dependencies:
   yandex_maps_mapkit_lite: ^4.9.0-beta
   geolocator: ^13.0.2
   permission_handler: ^10.0.0
+  json_annotation: ^4.8.1
 
   flutter_bloc: ^8.1.6
   google_fonts: ^4.0.4
   geocoding: ^2.1.0
   google_maps_flutter: ^2.1.12 #google_maps_flutter
+  dio: ^5.4.1
   get_it: ^8.0.2
   package_info_plus: ^4.0.1
   mask_text_input_formatter: ^2.9.0
