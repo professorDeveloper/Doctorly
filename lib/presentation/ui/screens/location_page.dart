@@ -258,9 +258,9 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                           vertical: 10.0),
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                         children: [
                                           SvgPicture.asset(AppImages.maleIcon),
                                           Text(
@@ -295,9 +295,9 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                     child: Center(
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                         children: [
                                           SvgPicture.asset(
                                               AppImages.femaleIcon),
@@ -323,29 +323,29 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                     Container(
                       height: 120,
                       child: ListView.builder(
-                        itemCount: 6,
+                          itemCount: 6,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 4),
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppColor.Gray1,
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Column(
-                            children: [
-                              SvgPicture.asset(AppImages.kapelIcon),
-                              SizedBox(height: 8,),
-                              Text("Kapelnisa",style: AppStyle.sfproDisplay14w400Black,),
-                              SizedBox(height: 4,),
-                              Text("100 000 сум",style: AppStyle.sfproDisplay14w400Black.copyWith(
-                                fontWeight: FontWeight.w500
-                              ),)
-                            ],
-                          ),
-                        );
-                      }),
+                            return Container(
+                              margin: EdgeInsets.symmetric(horizontal: 4),
+                              width: 110,
+                              decoration: BoxDecoration(
+                                color: AppColor.Gray1,
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: Column(
+                                children: [
+                                  SvgPicture.asset(AppImages.kapelIcon),
+                                  SizedBox(height: 8,),
+                                  Text("Kapelnisa",style: AppStyle.sfproDisplay14w400Black,),
+                                  SizedBox(height: 4,),
+                                  Text("100 000 сум",style: AppStyle.sfproDisplay14w400Black.copyWith(
+                                      fontWeight: FontWeight.w500
+                                  ),)
+                                ],
+                              ),
+                            );
+                          }),
                     ),
                     SizedBox(
                       height: 14,

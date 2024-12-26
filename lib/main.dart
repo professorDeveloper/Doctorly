@@ -1,4 +1,5 @@
 import 'package:doctorly/core/constants/app_color.dart';
+import 'package:doctorly/core/constants/keys.dart';
 import 'package:doctorly/presentation/ui/screens/auth/register_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/verify_screen.dart';
 import 'package:doctorly/presentation/ui/screens/location_page.dart';
@@ -7,9 +8,15 @@ import 'package:doctorly/presentation/ui/screens/onboarding/introduction_screen.
 import 'package:doctorly/utils/my_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yandex_maps_mapkit_lite/init.dart' as init;
 
-void main() {
+
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await init.initMapkit(
+      apiKey: Keys.yandex_key
+  );
   runApp(MyApp());
 }
 
@@ -49,7 +56,7 @@ class MyApp extends StatelessWidget {
               ),
               home: token != null && token.isNotEmpty
                   ?  MainScreen()
-                  :  IntroductionScreen(),
+                  :  MainScreen(),
             );
           } else {
             return CircularProgressIndicator();

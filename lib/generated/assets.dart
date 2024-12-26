@@ -23,6 +23,7 @@ class Assets {
   static const String imagesOnboarding4 = 'assets/images/onboarding4.png';
   static const String imagesPsixolog = 'assets/images/psixolog.png';
   static const String imagesTezyordam = 'assets/images/tezyordam.png';
+
   static const String imagesTibbiyhodim = 'assets/images/tibbiyhodim.png';
   static const String imagesTopshifokor = 'assets/images/topshifokor.png';
   static const String imagesVerifyicon = 'assets/images/verifyicon.png';
