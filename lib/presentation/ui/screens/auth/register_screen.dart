@@ -12,7 +12,8 @@ import '../../../../animations/custom_animation.dart';
 import '../../helpers/flushbar.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+   RegisterScreen({required this.pohne});
+  String pohne;
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -48,7 +49,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -60,11 +60,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         duration: 0.8,
         child: Container(
           height: Device.get().isAndroid ? 55 : 57,
-          margin:  EdgeInsets.symmetric(horizontal: 20,vertical:Device.get().isAndroid?30:40),
+          margin: EdgeInsets.symmetric(
+              horizontal: 20, vertical: Device.get().isAndroid ? 30 : 40),
           width: double.infinity,
           child: MaterialButton(
             color: AppColor.BlueMain,
-            onPressed: ()  {
+            onPressed: () {
               openScreen(context, MainScreen());
             },
             elevation: 0,
@@ -89,7 +90,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
       ),
-
       backgroundColor: AppColor.White,
       body: SingleChildScrollView(
         child: Column(
@@ -173,7 +173,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(
-                          color: AppColor.BlueMain, // Change this to focus color
+                          color:
+                              AppColor.BlueMain, // Change this to focus color
                         ),
                       ),
                     ),
@@ -233,7 +234,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(
-                          color: AppColor.BlueMain, // Change this to focus color
+                          color:
+                              AppColor.BlueMain, // Change this to focus color
                         ),
                       ),
                     ),
@@ -389,7 +391,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xffD9E4F3),width: 1),
+                          border:
+                              Border.all(color: Color(0xffD9E4F3), width: 1),
                           borderRadius: BorderRadius.circular(16),
                           color: Colors.white,
                         ),
@@ -415,8 +418,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 size: 25,
                               ),
                             ),
-                            SizedBox(width: 10,),
-                            Text("Ayol",style: AppStyle.sfproDisplay18Black.copyWith(fontSize: 16),), // Label for Female
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Ayol",
+                              style: AppStyle.sfproDisplay18Black
+                                  .copyWith(fontSize: 16),
+                            ), // Label for Female
                           ],
                         ),
                       ),
@@ -426,7 +435,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   // Option for selecting "Erkak" (Male)
                   Expanded(
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
                           _selectedGender = "Erkak"; // Select Male
                         });
@@ -435,7 +444,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: Color(0xffD9E4F3),width: 1),
+                          border:
+                              Border.all(color: Color(0xffD9E4F3), width: 1),
                           color: Colors.white,
                         ),
                         alignment: Alignment.center,
@@ -459,8 +469,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 size: 25,
                               ),
                             ),
-                            SizedBox(width: 10,),
-                            Text("Erkak",style: AppStyle.sfproDisplay18Black.copyWith(fontSize: 16),), // Label for Male
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Erkak",
+                              style: AppStyle.sfproDisplay18Black
+                                  .copyWith(fontSize: 16),
+                            ), // Label for Male
                           ],
                         ),
                       ),
@@ -469,7 +485,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 24,),
+            SizedBox(
+              height: 24,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14.0),
               child: Column(
@@ -511,7 +529,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         borderSide: const BorderSide(
                           color: AppColor.Gray,
                         ),
-
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -522,11 +539,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(
-                          color: AppColor.BlueMain, // Change this to focus color
+                          color:
+                              AppColor.BlueMain, // Change this to focus color
                         ),
                       ),
                     ),
-                    onTap: () => _selectDate(context), // Opens the date picker when tapped
+                    onTap: () => _selectDate(
+                        context), // Opens the date picker when tapped
                   ),
                 ],
               ),
@@ -583,7 +602,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(
-                          color: AppColor.BlueMain, // Change this to focus color
+                          color:
+                              AppColor.BlueMain, // Change this to focus color
                         ),
                       ),
                     ),
@@ -591,13 +611,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
             ),
-
-
           ],
         ),
       ),
     );
   }
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -608,9 +627,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     if (picked != null && picked != DateTime.now()) {
       setState(() {
-        _controller.text = "${picked.day.toString().padLeft(2, '0')}.${picked.month.toString().padLeft(2, '0')}.${picked.year}";
+        _controller.text =
+            "${picked.day.toString().padLeft(2, '0')}.${picked.month.toString().padLeft(2, '0')}.${picked.year}";
       });
     }
   }
-
 }

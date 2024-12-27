@@ -46,7 +46,7 @@ class AuthApiImpl implements AuthApi {
     try {
       print(request.toJson());
       String bodyData =
-          jsonEncode({"code": request.code, "phone": request.phone});
+          jsonEncode({"code": "${request.code}", "phone": "+${request.phone}"});
       final response = await http.post(
           Uri.parse("${Keys.baseUrl}/accounts/verify-code/"),
           headers: {"Content-Type": "application/json"},

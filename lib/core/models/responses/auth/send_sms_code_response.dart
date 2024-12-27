@@ -3,18 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class SendSmsCodeResponse {
-  final String detail;
+  final String message;
+  final String token;
 
   const SendSmsCodeResponse({
-   required this.detail,
+    required this.message,
+    required this.token,
   });
   factory SendSmsCodeResponse.fromJson(Map<String, dynamic> json) =>
       SendSmsCodeResponse(
-        detail: json['detail']  ?? json['phone'][0] ?? "",
+        message: json['message']   ?? "",
+        token: json['token']  ?? "",
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'detail': detail,
   };
 
 }

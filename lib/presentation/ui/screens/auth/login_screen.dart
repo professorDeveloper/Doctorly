@@ -201,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: progress
-                          ? Center(child: CircularProgressIndicator())
+                          ? Center(child: CircularProgressIndicator(color: Colors.white,))
                           : Row(
                               children: [
                                 Spacer(),

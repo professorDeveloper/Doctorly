@@ -1,3 +1,4 @@
+import 'package:doctorly/bloc/verify/verify_bloc.dart';
 import 'package:doctorly/core/constants/app_color.dart';
 import 'package:doctorly/core/constants/keys.dart';
 import 'package:doctorly/presentation/ui/screens/auth/login_screen.dart';
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
                 ),
                 BlocProvider<SendSmsCodeBloc>(
                   create: (context) => SendSmsCodeBloc(),
+                ),
+                BlocProvider<VerifyBloc>(
+                  create: (context) => VerifyBloc(),
                 ),
 
               ],

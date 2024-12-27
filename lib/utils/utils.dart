@@ -6,6 +6,14 @@ String convertPhoneNumber(String input) {
 
   return "+"+result;
 }
+String formatPhoneNumber(String phoneNumber) {
+  // Remove the "+" at the beginning, if present
+  phoneNumber = phoneNumber.replaceAll("+", "");
+
+  // Reformat the string
+  return "${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3, 5)} ${phoneNumber.substring(5, 8)} ${phoneNumber.substring(8, 10)} ${phoneNumber.substring(10)}";
+}
+
 // final List<Widget> screens = [
 //   HomeScreen(),
 //   CategoriesScreen(),
