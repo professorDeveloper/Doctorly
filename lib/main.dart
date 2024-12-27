@@ -1,3 +1,4 @@
+import 'package:doctorly/bloc/register/register_bloc.dart';
 import 'package:doctorly/bloc/verify/verify_bloc.dart';
 import 'package:doctorly/core/constants/app_color.dart';
 import 'package:doctorly/core/constants/keys.dart';
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
                 BlocProvider<VerifyBloc>(
                   create: (context) => VerifyBloc(),
                 ),
+                BlocProvider<RegisterBloc>(
+                  create: (context) => RegisterBloc(),
+                ),
 
               ],
               child: BlocConsumer<LoginBloc, LoginState>(
@@ -80,7 +84,7 @@ class MyApp extends StatelessWidget {
                     ),
                     home: token != null && token.isNotEmpty
                         ? MainScreen()
-                        : IntroductionScreen(),
+                        : RegisterScreen(pohne: "pohne", tokenForAccess: "tokenForAccess"),
                   );
                 },
               ),

@@ -41,15 +41,18 @@ class _VerifyScreenState extends State<VerifyScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<VerifyBloc, VerifyState>(
       listener: (context, state) {
-        controller.removeListener((){
-          isError=false;
-          setState(() {
-            
-          });
+        controller.removeListener(() {
+          isError = false;
+          setState(() {});
         });
         if (state is VerifySuccess) {
           Navigator.of(context).pop();
-          openScreen(context, RegisterScreen(pohne: widget.phone));
+          openScreen(
+              context,
+              RegisterScreen(
+                pohne: widget.phone,
+                tokenForAccess: state.sendSmsCodeResponse.token,
+              ));
         }
 
         if (state is VerifyFailure) {

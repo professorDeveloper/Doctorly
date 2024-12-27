@@ -6,10 +6,12 @@ import 'package:http/http.dart' as http;
 import '../../utils/my_pref.dart';
 import '../../utils/response.dart';
 import '../models/requests/auth/login_request.dart';
+import '../models/requests/auth/register_request.dart';
 import '../models/requests/auth/send_sms_code_request.dart';
 import '../models/requests/verify/verify_request.dart';
 import '../models/responses/auth/error_response.dart';
 import '../models/responses/auth/login_response.dart';
+import '../models/responses/auth/register_response.dart';
 import '../models/responses/auth/send_sms_code_response.dart';
 import 'auth_api.dart';
 
@@ -94,6 +96,42 @@ class AuthApiImpl implements AuthApi {
       }
     } catch (e) {
       // Handle other types of exceptions, e.g., network errors
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<Result> register({required RegisterRequest registerRequest}) async {
+    try {
+      final response = await http.post(
+          Uri.parse("${Keys.baseUrl}/accounts/register/"),
+          body: registerRequest.toJson());
+      print(response.body.toString() + "response ;;;");
+      if (response.statusCode == 200) {
+        if (response.body.contains("access_token")) {
+          print("aaaassasda");
+          print(response.body);
+          Map<String, dynamic> jsonMap = json.decode(response.body);
+          var registerResponse = RegisterResponse.fromJson(jsonMap);
+          init();
+          Prefs.setUserPassword(registerRequest.password!!);
+          Prefs.setUserPhone(registerRequest.phone!);
+          print(registerResponse.accessToken);
+          return Success(registerResponse);
+        } else {
+          Map<String, dynamic> jsonMap = json.decode(response.body);
+          print("asdasdad"
+                  "" +
+              jsonMap.toString());
+
+          return Error(ErrorResponse.fromJson(jsonMap) as String);
+        }
+      } else {
+        var errorData = json.decode(response.body);
+        print("ErrorData" + errorData);
+        return Error(errorData);
+      }
+    } catch (e) {
       throw Exception(e);
     }
   }
