@@ -28,13 +28,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var nameFocus = FocusNode();
   var tuglganfocus = FocusNode();
   var adressfocus = FocusNode();
+  late RegisterBloc bloc;
+  var nameError = "";
+  var progress = false;
+  var surnameError = "";
+  var JshshrError = "";
+  var passportSeriaError = "";
+  var passportNumberError = "";
 
-  var progress=false;
   var nameController = TextEditingController();
   var surnameController = TextEditingController();
   TextEditingController _controller = TextEditingController();
   var surnameFocus = FocusNode();
   var serieController = TextEditingController();
+  var passportNumberController = TextEditingController();
   var jsshrController = TextEditingController();
   var serieFocus = FocusNode();
   var jsshrFocus = FocusNode();
@@ -61,6 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   void initState() {
     super.initState();
+    bloc = BlocProvider.of<RegisterBloc>(context);
   }
 
   @override
@@ -76,8 +84,56 @@ class _RegisterScreenState extends State<RegisterScreen> {
           width: double.infinity,
           child: MaterialButton(
             color: AppColor.BlueMain,
-            onPressed: () {
-              openScreen(context, MainScreen());
+            onPressed: () async {
+              if (nameController.text.isEmpty) {
+                showErrorFlushBar("Enter name").show(context);
+                nameError = "Ism kiritilmagan !";
+                setState(() {});
+                await Future.delayed(Duration(seconds: 3));
+                nameError = "";
+                setState(() {});
+              } else if (surnameController.text.isEmpty) {
+                showErrorFlushBar("Enter Surname").show(context);
+                surnameError = "Familya kiritilmagan !";
+                setState(() {});
+                await Future.delayed(Duration(seconds: 3));
+                surnameError = "";
+                setState(() {});
+              } else if (jsshrController.text.isEmpty) {
+                showErrorFlushBar("Enter Jshhir").show(context);
+                JshshrError = "Jsshr kiritilmagan !";
+                setState(() {});
+                await Future.delayed(Duration(seconds: 3));
+                JshshrError = "";
+                setState(() {});
+              } else if (serieController.text.isEmpty) {
+                showErrorFlushBar("Enter name").show(context);
+                passportSeriaError = "Seria kiritilmagan !";
+                setState(() {});
+                await Future.delayed(Duration(seconds: 3));
+                passportSeriaError = "";
+                setState(() {});
+              } else if (passportNumberController.text.isEmpty) {
+                showErrorFlushBar("Enter name").show(context);
+                passportNumberError = "Passport number kiritilmagan !";
+                setState(() {});
+                await Future.delayed(Duration(seconds: 3));
+                passportNumberError = "";
+                setState(() {});
+              } else if (nameController.text.isNotEmpty &&
+                  surnameController.text.isNotEmpty &&
+                  jsshrController.text.isNotEmpty &&
+                  serieController.text.isNotEmpty &&
+                  passportNumberController.text.isNotEmpty) {
+                // bloc.add(RegisterEvent(
+                //     name: nameController.text,
+                //     surname: surnameController.text,
+                //     jsshr: jsshrController.text,
+                //     passportSeria: serieController.text,
+                //     passportNumber: passportNumberController.text,
+                //     phone: widget.pohne,
+                //     gender: _selectedGender));
+              }
             },
             elevation: 0,
             highlightElevation: 0,
@@ -86,18 +142,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Row(
-              children: [
-                Spacer(),
-                Text("Yakunlash"),
-                Spacer(),
-                Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
-                  size: 24,
-                )
-              ],
-            ),
+            child: progress
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : Row(
+                    children: [
+                      Spacer(),
+                      Text("Yakunlash"),
+                      Spacer(),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                        size: 24,
+                      )
+                    ],
+                  ),
           ),
         ),
       ),
@@ -189,6 +251,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           surnameFocus.requestFocus();
                         },
                         decoration: InputDecoration(
+                          errorText: nameError.isEmpty ? null : nameError,
                           hintText: "Kiriting...",
                           hintStyle:
                               TextStyle(color: AppColor.Gray3, fontSize: 14),
@@ -235,12 +298,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 12),
                       TextField(
+                        controller: surnameController,
                         focusNode: surnameFocus,
                         onEditingComplete: () {
-                          serieFocus.requestFocus();
+                          jsshrFocus.requestFocus();
                         },
                         onSubmitted: (v) {
-                          serieFocus.requestFocus();
+                          jsshrFocus.requestFocus();
                         },
                         autofocus: true,
                         style: TextStyle(
@@ -251,6 +315,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
+                          errorText: surnameError.isEmpty ? null : surnameError,
                           hintText: "Kiriting...",
                           hintStyle:
                               TextStyle(color: AppColor.Gray3, fontSize: 14),
@@ -297,7 +362,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 12),
                       TextField(
-                        focusNode: surnameFocus,
+                        focusNode: jsshrFocus,
+                        controller: jsshrController,
                         onEditingComplete: () {
                           serieFocus.requestFocus();
                         },
@@ -313,9 +379,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
+                          errorText: JshshrError.isEmpty ? null : JshshrError,
                           hintText: "Kiriting...",
                           hintStyle:
-                          TextStyle(color: AppColor.Gray3, fontSize: 14),
+                              TextStyle(color: AppColor.Gray3, fontSize: 14),
                           filled: true,
                           fillColor: AppColor.Gray,
                           border: OutlineInputBorder(
@@ -364,6 +431,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             const SizedBox(height: 12),
                             TextField(
+                              controller: serieController,
                               focusNode: serieFocus,
                               onSubmitted: (v) {
                                 numberfocus.requestFocus();
@@ -385,6 +453,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               keyboardType: TextInputType.name,
                               decoration: InputDecoration(
                                 hintText: "AD",
+                                errorText: passportSeriaError.isEmpty
+                                    ? null
+                                    : passportSeriaError,
                                 hintStyle: TextStyle(
                                     color: AppColor.Gray3, fontSize: 14),
                                 filled: true,
@@ -431,6 +502,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             const SizedBox(height: 12),
                             TextField(
+                              controller: passportNumberController,
                               focusNode: numberfocus,
                               inputFormatters: [passportNumberFormatter],
                               autofocus: true,
@@ -442,6 +514,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               keyboardType: TextInputType.name,
                               decoration: InputDecoration(
+                                errorText: passportNumberError.isEmpty
+                                    ? null
+                                    : passportNumberError,
                                 hintText: "(46165432)",
                                 hintStyle: TextStyle(
                                     color: AppColor.Gray3, fontSize: 14),

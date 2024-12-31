@@ -12,7 +12,6 @@ import 'package:doctorly/utils/my_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:yandex_maps_mapkit_lite/init.dart' as init;
 
 import 'bloc/login/login_bloc.dart';
 import 'bloc/login/send_sms_code_bloc.dart';
@@ -22,9 +21,6 @@ import 'core/di/get_it.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  await init.initMapkit(
-      apiKey: Keys.yandex_key
-  );
   runApp(MyApp());
 }
 
@@ -84,8 +80,7 @@ class MyApp extends StatelessWidget {
                     ),
                     home: token != null && token.isNotEmpty
                         ? MainScreen()
-                        : RegisterScreen(pohne: "pohne", tokenForAccess: "tokenForAccess"),
-                  );
+                  : MainScreen());
                 },
               ),
             );

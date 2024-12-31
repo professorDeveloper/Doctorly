@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to show it on the map.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Doctorly</string>
 	<key>CFBundleExecutable</key>
