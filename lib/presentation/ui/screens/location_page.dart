@@ -1,6 +1,13 @@
+import 'package:doctorly/core/constants/app_color.dart';
+import 'package:doctorly/core/constants/app_images.dart';
+import 'package:doctorly/core/constants/app_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_device_type/flutter_device_type.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
+
+import '../../../core/helper/location.dart';
 
 class CurrentLocationScreen extends StatefulWidget {
   @override
@@ -8,9 +15,10 @@ class CurrentLocationScreen extends StatefulWidget {
 }
 
 class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
-  late YandexMapController _yandexMapController;
-  Point _currentPosition = Point(latitude: 41.2995, longitude: 69.2401); // Default to Tashkent
+  GoogleMapController? _mapController;
+  LatLng _currentPosition = LatLng(41.2995, 69.2401); // Default to Tashkent
   bool _isLoading = true;
+  Map<String, String> locationDetails = {};
 
   @override
   void initState() {
@@ -28,7 +36,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
           _isLoading = false;
         });
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Location permission denied. Please enable it in settings.'),
+          content: Text('Location permission denied.'),
         ));
         return;
       }
@@ -37,19 +45,16 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
 
+      locationDetails = await getCurrentLocationDetails();
       setState(() {
-        _currentPosition =
-            Point(latitude: position.latitude, longitude: position.longitude);
+        _currentPosition = LatLng(position.latitude, position.longitude);
         _isLoading = false;
       });
 
-      // Move the Yandex camera to the current position
-      _yandexMapController.moveCamera(
+      // Animate camera to current position
+      _mapController?.animateCamera(
         CameraUpdate.newCameraPosition(
-          CameraPosition(
-            target: _currentPosition,
-            zoom: 14.0,
-          ),
+          CameraPosition(target: _currentPosition, zoom: 16.0),
         ),
       );
     } catch (e) {
@@ -62,34 +67,91 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
     }
   }
 
+  Future<void> fetchLocationDetails() async {
+    // Check and request location permission
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Location permission denied.'),
+      ));
+      return;
+    }
+
+    locationDetails = await getCurrentLocationDetails();
+    setState(() {});
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    _mapController = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          YandexMap(
-            onMapCreated: (controller) {
-              _yandexMapController = controller;
-              _yandexMapController.moveCamera(
-                CameraUpdate.newCameraPosition(
-                  CameraPosition(target: _currentPosition, zoom: 14.0),
+          GoogleMap(
+            onTap: (coordinates) async {
+              Position position = await Geolocator.getCurrentPosition(
+                  desiredAccuracy: LocationAccuracy.high);
+              locationDetails = await getCurrentLocationDetails();
+              setState(() {
+                _currentPosition = coordinates;
+                fetchLocationDetails();
+              });
+            },
+            zoomControlsEnabled: false,
+            zoomGesturesEnabled: true,
+            scrollGesturesEnabled: true,
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _currentPosition,
+              zoom: 14.0,
+            ),
+            markers: {
+              Marker(
+                markerId: MarkerId('currentLocation'),
+                position: _currentPosition,
+              ),
+            },
+          ),
+          DraggableScrollableSheet(
+            minChildSize: 0.4,
+            initialChildSize: 0.4,
+            maxChildSize: 0.4,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 13.5, top: 15),
+                      child: Text(
+                        'Kichik tibbiy hodim chaqirish',
+                        style: AppStyle.sfproDisplay18Black.copyWith(
+                            fontWeight: FontWeight.w500, fontSize: 16),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    // Rest of your widget structure
+                  ],
                 ),
               );
             },
-            onMapTap: (Point point) {
-              setState(() {
-                _currentPosition = point;
-              });
-            },
-            zoomGesturesEnabled: true,
           ),
-          if (_isLoading)
-            Center(
-              child: CircularProgressIndicator(),
-            ),
           Padding(
-            padding: EdgeInsets.only(bottom: 50.0, left: 15.0, right: 15.0),
+            padding: EdgeInsets.only(
+                right: 15.0, left: 15, bottom: Device.height / 100 * 16),
             child: Row(
               children: [
                 FloatingActionButton(
@@ -100,7 +162,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                   backgroundColor: Colors.white,
                   child: Icon(
                     Icons.arrow_back,
-                    color: Colors.black,
+                    color: AppColor.Black,
                   ),
                 ),
                 Spacer(),
@@ -110,12 +172,16 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                   backgroundColor: Colors.white,
                   child: Icon(
                     Icons.location_on,
-                    color: Colors.red,
+                    color: AppColor.RedMain,
                   ),
                 ),
               ],
             ),
           ),
+          if (_isLoading)
+            Center(
+              child: CircularProgressIndicator(),
+            ),
         ],
       ),
     );

@@ -98,9 +98,11 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                           const SizedBox(
                             height: 12,
                           ),
-                          Text(
-                            contents[i].description,
-                            style: AppStyle.sfproDisplay18Gray5,
+                          Expanded(
+                            child: Text(
+                              contents[i].description,
+                              style: AppStyle.sfproDisplay18Gray5,
+                            ),
                           ),
                         ],
                       ),
@@ -180,7 +182,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               ),
             ),
             SizedBox(
-              height: Device.get().isAndroid ? 30 : 50,
+              height: Device.get().isAndroid ? 20 : 50,
             ),
           ],
         ),
