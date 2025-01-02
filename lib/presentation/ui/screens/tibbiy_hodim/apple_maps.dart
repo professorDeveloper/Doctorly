@@ -1,29 +1,34 @@
+import 'package:apple_maps_flutter/apple_maps_flutter.dart';
 import 'package:doctorly/core/constants/app_color.dart';
 import 'package:doctorly/core/constants/app_images.dart';
 import 'package:doctorly/core/constants/app_style.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-import '../../../core/helper/location.dart';
+import '../../../../core/helper/location.dart';
 
-class CurrentLocationScreen extends StatefulWidget {
+class CurrentLocationScreenForApple extends StatefulWidget {
   @override
   _CurrentLocationScreenState createState() => _CurrentLocationScreenState();
 }
 
-class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
-  GoogleMapController? _mapController;
-  LatLng _currentPosition = LatLng(41.2995, 69.2401); // Default to Tashkent
+class _CurrentLocationScreenState extends State<CurrentLocationScreenForApple> {
+  var currentPosition = LatLng(41.2995, 69.2401); // Default to Tashkent
   bool _isLoading = true;
   Map<String, String> locationDetails = {};
+  late AppleMapController _mapController;
 
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
+  }
+
+  void appleMapCreated(AppleMapController controller) {
+    _mapController = controller;
   }
 
   Future<void> _getCurrentLocation() async {
@@ -46,15 +51,17 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
           desiredAccuracy: LocationAccuracy.high);
 
       locationDetails = await getCurrentLocationDetails();
+      print("getted");
+      setState(() {});
       setState(() {
-        _currentPosition = LatLng(position.latitude, position.longitude);
+        currentPosition = LatLng(position.latitude, position.longitude);
         _isLoading = false;
       });
 
       // Animate camera to current position
       _mapController?.animateCamera(
         CameraUpdate.newCameraPosition(
-          CameraPosition(target: _currentPosition, zoom: 16.0),
+          CameraPosition(target: currentPosition, zoom: 16.0),
         ),
       );
     } catch (e) {
@@ -82,40 +89,24 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
     setState(() {});
   }
 
-  void _onMapCreated(GoogleMapController controller) {
-    _mapController = controller;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          GoogleMap(
-            onTap: (coordinates) async {
-              Position position = await Geolocator.getCurrentPosition(
-                  desiredAccuracy: LocationAccuracy.high);
-              locationDetails = await getCurrentLocationDetails();
-              setState(() {
-                _currentPosition = coordinates;
-                fetchLocationDetails();
-              });
+          AppleMap(
+            annotations: {
+              Annotation(
+                  annotationId: AnnotationId("annotation_1"),
+                  position: currentPosition,
+                  icon:BitmapDescriptor.markerAnnotation)
             },
-            zoomControlsEnabled: false,
-            zoomGesturesEnabled: true,
-            scrollGesturesEnabled: true,
-            onMapCreated: _onMapCreated,
+            onMapCreated: appleMapCreated,
             initialCameraPosition: CameraPosition(
-              target: _currentPosition,
-              zoom: 14.0,
+              target: currentPosition,
+              zoom: 15.0,
             ),
-            markers: {
-              Marker(
-                markerId: MarkerId('currentLocation'),
-                position: _currentPosition,
-              ),
-            },
           ),
           DraggableScrollableSheet(
             minChildSize: 0.4,
@@ -151,7 +142,10 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
           ),
           Padding(
             padding: EdgeInsets.only(
-                right: 15.0, left: 15, bottom: Device.height / 100 * 16),
+              right: 15.0,
+              left: 15,
+              bottom: MediaQuery.of(context).size.height * 0.41,
+            ),
             child: Row(
               children: [
                 FloatingActionButton(

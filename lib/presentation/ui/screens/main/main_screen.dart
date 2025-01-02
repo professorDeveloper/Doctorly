@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:doctorly/core/constants/app_images.dart';
 import 'package:doctorly/navigator/navigator.dart';
-import 'package:doctorly/presentation/ui/screens/location_page.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/location_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
 import 'package:flutter_svg/svg.dart';
@@ -81,27 +82,27 @@ class _MainScreenState extends State<MainScreen> {
                     },
                     child: locationDetails == null
                         ? Shimmer.fromColors(
-                            baseColor: Colors.grey[300]!,
-                            // Light base color
-                            highlightColor: Colors.grey[100]!,
-                            // Light highlight color
-                            child: Container(
-                              width: 200,
-                              // Make the shimmer effect the same width as your text
-                              height: 20,
-                              // Adjust height according to the text size
-                              color: Colors
-                                  .white, // Color of the shimmer placeholder
-                            ),
-                          ) // Shimmer effect while loading
+                      baseColor: Colors.grey[300]!,
+                      // Light base color
+                      highlightColor: Colors.grey[100]!,
+                      // Light highlight color
+                      child: Container(
+                        width: 200,
+                        // Make the shimmer effect the same width as your text
+                        height: 20,
+                        // Adjust height according to the text size
+                        color: Colors
+                            .white, // Color of the shimmer placeholder
+                      ),
+                    ) // Shimmer effect while loading
                         : Text(
-                            '${locationDetails!['city']}, ${locationDetails!['district']}',
-                            style: AppStyle.sfproDisplay16Nonormal.copyWith(
-                              fontSize: 12,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                      '${locationDetails!['city']}, ${locationDetails!['district']}',
+                      style: AppStyle.sfproDisplay16Nonormal.copyWith(
+                        fontSize: 12,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
                   SizedBox(
                     width: 5,
@@ -134,7 +135,9 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: Device.get().isAndroid ? 35 : 50,
+              height: Device
+                  .get()
+                  .isAndroid ? 35 : 50,
             ),
             Row(
               children: [
@@ -261,7 +264,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                       color: Colors.red,
                                       borderRadius:
-                                          BorderRadius.all(Radius.circular(4)),
+                                      BorderRadius.all(Radius.circular(4)),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
@@ -296,8 +299,8 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Expanded(
                       child: Image(
-                    image: AssetImage(AppImages.discount),
-                  )),
+                        image: AssetImage(AppImages.discount),
+                      )),
                 ],
               ),
             ),
@@ -351,8 +354,12 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   flex: 5,
                   child: GestureDetector(
-                    onTap: (){
-                      openScreen(context, CurrentLocationScreen());
+                    onTap: () {
+                      Device
+                          .get()
+                          .isAndroid ? openScreen(
+                          context, CurrentLocationScreen()) :
+                          openScreen(context, CurrentLocationScreenForApple());
                     },
                     child: Column(
                       children: [
@@ -470,7 +477,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -497,7 +504,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -528,7 +535,7 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
@@ -555,12 +562,12 @@ class _MainScreenState extends State<MainScreen> {
                                     decoration: BoxDecoration(
                                         color: AppColor.Gray1,
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                        BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Image(
                                         image:
-                                            AssetImage(AppImages.topshifokor),
+                                        AssetImage(AppImages.topshifokor),
                                         width: 80,
                                       ),
                                     )),
@@ -593,7 +600,7 @@ class _MainScreenState extends State<MainScreen> {
                               borderRadius: BorderRadius.circular(20)),
                           child: Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,

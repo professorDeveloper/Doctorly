@@ -27,10 +27,6 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - yandex_mapkit (0.0.1):
-    - Flutter
-    - YandexMapsMobile (= 4.6.1-lite)
-  - YandexMapsMobile (4.6.1-lite)
 
 DEPENDENCIES:
   - apple_maps_flutter (from `.symlinks/plugins/apple_maps_flutter/ios`)
@@ -42,13 +38,11 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
-  - yandex_mapkit (from `.symlinks/plugins/yandex_mapkit/ios`)
 
 SPEC REPOS:
   trunk:
     - Google-Maps-iOS-Utils
     - GoogleMaps
-    - YandexMapsMobile
 
 EXTERNAL SOURCES:
   apple_maps_flutter:
@@ -69,8 +63,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
-  yandex_mapkit:
-    :path: ".symlinks/plugins/yandex_mapkit/ios"
 
 SPEC CHECKSUMS:
   apple_maps_flutter: c59725efea39e13e703cde52a1d2b14866ad68a8
@@ -84,8 +76,6 @@ SPEC CHECKSUMS:
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
-  yandex_mapkit: 99516c0d4d24d61bcb3711b5944223e8a3d70b46
-  YandexMapsMobile: 7e20ef4db180b901c96f8107fade91d6349248a0
 
 PODFILE CHECKSUM: 1b50a4280f44a231b37f858aebc2a001225decec
 

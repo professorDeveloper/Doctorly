@@ -52,7 +52,7 @@ dependencies:
   package_info_plus: ^4.0.1
   mask_text_input_formatter: ^2.9.0
   shared_preferences: ^2.0.13
-  yandex_mapkit: ^4.1.0
+#  yandex_mapkit: ^4.1.0
   pin_code_fields: ^8.0.1
   flutter_device_type: ^0.4.0
   flutter_svg: ^2.0.16

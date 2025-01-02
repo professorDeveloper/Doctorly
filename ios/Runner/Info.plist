@@ -49,7 +49,8 @@
     <string>We need your location for...</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>We need your location for...</string>
-
+   <key>GMSAPIKey</key>
+   <string>AIzaSyDlyelUlpPGiEtnNjZmTi002Ce0ezXyVi8</string>
 
 </dict>
 </plist>
