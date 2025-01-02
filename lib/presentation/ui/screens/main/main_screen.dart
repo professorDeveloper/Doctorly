@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:doctorly/core/constants/app_images.dart';
 import 'package:doctorly/navigator/navigator.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/choose_services.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/location_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
@@ -355,11 +356,7 @@ class _MainScreenState extends State<MainScreen> {
                   flex: 5,
                   child: GestureDetector(
                     onTap: () {
-                      Device
-                          .get()
-                          .isAndroid ? openScreen(
-                          context, CurrentLocationScreen()) :
-                          openScreen(context, CurrentLocationScreenForApple());
+                      openScreen(context, ChooseServicesTibbiyHodim());
                     },
                     child: Column(
                       children: [

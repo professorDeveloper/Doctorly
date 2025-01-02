@@ -26,4 +26,5 @@ static const String femaleIcon='assets/icons/female.svg';
 static const String labaratory='assets/images/labaratory.png';
 static const String topshifokor='assets/images/topshifokor.png';
 static const String massaj='assets/images/massaj.png';
+static const String servicesvg='assets/icons/servicesvg.svg';
 }

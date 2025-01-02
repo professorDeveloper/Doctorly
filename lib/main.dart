@@ -5,6 +5,8 @@ import 'package:doctorly/core/constants/keys.dart';
 import 'package:doctorly/presentation/ui/screens/auth/login_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/register_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/verify_screen.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/choose_services.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/location_page.dart';
 import 'package:doctorly/presentation/ui/screens/main/main_screen.dart';
 import 'package:doctorly/presentation/ui/screens/onboarding/introduction_screen.dart';
