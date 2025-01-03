@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:doctorly/core/constants/app_images.dart';
 import 'package:doctorly/navigator/navigator.dart';
+import 'package:doctorly/presentation/ui/screens/massaj/choose_massaj.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/choose_services.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/location_page.dart';
@@ -469,28 +470,33 @@ class _MainScreenState extends State<MainScreen> {
                         Row(
                           children: [
                             Expanded(
-                              child: Column(children: [
-                                Container(
-                                    decoration: BoxDecoration(
-                                        color: AppColor.Gray1,
-                                        borderRadius:
-                                        BorderRadius.circular(20)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image(
-                                        image: AssetImage(AppImages.massaj),
-                                        width: 80,
-                                      ),
-                                    )),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Massaj",
-                                  style: AppStyle.sfproDisplay14w400Black
-                                      .copyWith(fontSize: 12),
-                                )
-                              ]),
+                              child: GestureDetector(
+                                onTap: (){
+                                  openScreen(context, ChooseMassajScreen());
+                                },
+                                child: Column(children: [
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          color: AppColor.Gray1,
+                                          borderRadius:
+                                          BorderRadius.circular(20)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image(
+                                          image: AssetImage(AppImages.massaj),
+                                          width: 80,
+                                        ),
+                                      )),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Massaj",
+                                    style: AppStyle.sfproDisplay14w400Black
+                                        .copyWith(fontSize: 12),
+                                  )
+                                ]),
+                              ),
                             ),
                             SizedBox(
                               width: 20,

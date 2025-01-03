@@ -7,18 +7,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/constants/app_color.dart';
 import '../../../../core/constants/app_style.dart';
 import '../../../../navigator/navigator.dart';
-import 'apple_maps.dart';
-import 'location_page.dart';
+import '../tibbiy_hodim/apple_maps.dart';
+import '../tibbiy_hodim/location_page.dart';
 
-class ChooseServicesTibbiyHodim extends StatefulWidget {
-  const ChooseServicesTibbiyHodim({super.key});
+class ChooseMassajScreen extends StatefulWidget {
+  const ChooseMassajScreen({super.key});
 
   @override
-  State<ChooseServicesTibbiyHodim> createState() =>
+  State<ChooseMassajScreen> createState() =>
       _ChooseServicesTibbiyHodimState();
 }
 
-class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
+class _ChooseServicesTibbiyHodimState extends State<ChooseMassajScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
           },
         ),
         title: Text(
-          'Kichik tibbiy hodim chaqirish',
+          'Massaj',
           style: AppStyle.sfproDisplay16Black,
         ),
         centerTitle: true,
@@ -89,12 +89,12 @@ class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
               borderRadius: BorderRadius.circular(12),
             ),
             color: AppColor.White,
-            margin: EdgeInsets.symmetric(horizontal: 13, vertical: 9),
+            margin: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
             child: Container(
               padding: EdgeInsets.all(12),
               child: Column(
                 children: [
-                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                     Container(
                         padding: EdgeInsets.all(7),
                         decoration: BoxDecoration(
@@ -102,7 +102,7 @@ class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
                           color: AppColor.Gray1,
                         ),
                         child: SvgPicture.asset(
-                          AppImages.servicesvg,
+                          AppImages.massajicon,
                           height: 36,
                           width: 36,
                         )),
@@ -137,62 +137,6 @@ class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
                       ),
                     ),
                   ]),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Container(
-                    height: 35,
-                    padding: EdgeInsets.symmetric(vertical: 1),
-                    decoration: BoxDecoration(
-                      color: AppColor.Gray1,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex: 3,
-                            child: Container(
-                              margin: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.white,
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.remove,
-                                  color: AppColor.Black,
-                                ),
-                              ),
-                            )),
-                        Expanded(
-                            flex: 2,
-                            child: Container(
-                              margin: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "0",
-                                  style: AppStyle.sfproDisplay14w400Gray5,
-                                ),
-                              ),
-                            )),
-                        Expanded(
-                            flex: 3,
-                            child: Container(
-                              margin: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: AppColor.BlueMain,
-                              ),
-                              child: Center(
-                                child: Icon(Icons.add, color: Colors.white),
-                              ),
-                            ))
-                      ],
-                    ),
-                  )
                 ],
               ),
             ),
