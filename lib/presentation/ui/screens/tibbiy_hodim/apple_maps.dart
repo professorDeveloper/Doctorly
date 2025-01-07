@@ -208,7 +208,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreenForApple> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Podyezd",
+                                        "Dom",
                                         style: AppStyle.sfproDisplay14w400Black
                                             .copyWith(fontSize: 12),
                                       ),

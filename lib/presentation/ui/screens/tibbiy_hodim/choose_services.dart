@@ -237,7 +237,7 @@ class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
                 onPressed: () async {
                   Device.get().isAndroid
                       ? openScreen(context, CurrentLocationScreen())
-                      : openScreen(context, CurrentLocationScreenForApple());
+                      : openScreen(context, CurrentLocationScreen());
                 },
                 elevation: 0,
                 highlightElevation: 0,

@@ -41,7 +41,7 @@ dependencies:
   geolocator: ^13.0.2
   permission_handler: ^10.0.0
   json_annotation: ^4.8.1
-
+  yandex_mapkit:
   flutter_bloc: ^8.1.6
   google_fonts: ^4.0.4
   geocoding: ^2.1.0

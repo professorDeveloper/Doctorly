@@ -1,9 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:label="doctorly"
-        android:name="${applicationName}"
+        android:name=".MainApplication"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -33,6 +35,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDlyelUlpPGiEtnNjZmTi002Ce0ezXyVi8" />
+        <meta-data
+            android:name="com.yandex.mapkit.API_KEY"
+            android:value="8ac3408b-a9c5-49c1-a161-9750bc804e93"/>
 
         <meta-data
             android:name="flutterEmbedding"
