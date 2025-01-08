@@ -48,6 +48,7 @@ dependencies:
   google_maps_flutter: ^2.1.12 #google_maps_flutter
   dio: ^5.4.1
   apple_maps_flutter: ^1.3.0
+  expandable_text: 2.3.0
   get_it: ^8.0.2
   package_info_plus: ^4.0.1
   mask_text_input_formatter: ^2.9.0
