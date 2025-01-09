@@ -24,6 +24,7 @@ class _ChooseServicesTibbiyHodimState extends State<ChooseServicesTibbiyHodim> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.White,
+
         elevation: Device.get().isAndroid ? 0.4 : 0.1,
         leading: IconButton(
           style: ButtonStyle(),

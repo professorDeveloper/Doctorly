@@ -5,6 +5,8 @@ import 'package:doctorly/main.dart';
 import 'package:doctorly/navigator/navigator.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/doctor_info_bottomsheet.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/medical_examination_screen.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -157,642 +159,642 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
               controller: pageController,
               physics: NeverScrollableScrollPhysics(),
               children: [
-                // Container(
-                //   decoration: BoxDecoration(
-                //     color: AppColor.White,
-                //     borderRadius: BorderRadius.only(
-                //       topLeft: Radius.circular(30),
-                //       topRight: Radius.circular(30),
-                //     ),
-                //   ),
-                //   child: Container(
-                //     decoration: BoxDecoration(),
-                //     child: ListView(
-                //       children: [
-                //         Container(
-                //           color: AppColor.White,
-                //           child: Column(
-                //             crossAxisAlignment: CrossAxisAlignment.start,
-                //             children: [
-                //               Padding(
-                //                 padding: const EdgeInsets.only(
-                //                   left: 13.5,
-                //                   top: 5,
-                //                 ),
-                //                 child: Text('Kichik tibbiy hodim chaqirish',
-                //                     style: AppStyle.sfproDisplay18Black
-                //                         .copyWith(
-                //                             fontWeight: FontWeight.w500,
-                //                             fontSize: 16)),
-                //               ),
-                //               SizedBox(
-                //                 height: 16,
-                //               ),
-                //               Container(
-                //                 width: double.infinity,
-                //                 margin: EdgeInsets.symmetric(horizontal: 12.5),
-                //                 decoration: BoxDecoration(
-                //                     borderRadius: BorderRadius.circular(14),
-                //                     color: Color(0xffF0F6FE)),
-                //                 child: Padding(
-                //                   padding: const EdgeInsets.symmetric(
-                //                       vertical: 14.0),
-                //                   child: Row(
-                //                     children: [
-                //                       SizedBox(
-                //                         width: 14,
-                //                       ),
-                //                       Icon(
-                //                         Icons.location_on,
-                //                         color: AppColor.Black,
-                //                       ),
-                //                       SizedBox(
-                //                         width: 10,
-                //                       ),
-                //                       Expanded(
-                //                         child: Text(
-                //                           maxLines: 1,
-                //                           '${locationDetails!['city']}, ${locationDetails!['address']}',
-                //                           style: AppStyle.sfproDisplay16Black
-                //                               .copyWith(
-                //                                   fontSize: 15.5,
-                //                                   overflow:
-                //                                       TextOverflow.ellipsis),
-                //                         ),
-                //                       ),
-                //                       SizedBox(
-                //                         width: 10,
-                //                       ),
-                //                     ],
-                //                   ),
-                //                 ),
-                //               ),
-                //               SizedBox(
-                //                 height: 18,
-                //               ),
-                //               Container(
-                //                 margin: EdgeInsets.symmetric(horizontal: 10),
-                //                 child: Row(
-                //                   children: [
-                //                     SizedBox(
-                //                       width: 12,
-                //                     ),
-                //                     Expanded(
-                //                         child: Column(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.start,
-                //                       children: [
-                //                         Text(
-                //                           "Podyezd",
-                //                           style: AppStyle
-                //                               .sfproDisplay14w400Black
-                //                               .copyWith(fontSize: 12),
-                //                         ),
-                //                         Container(
-                //                           height: 40,
-                //                           child: TextField(
-                //                             decoration: InputDecoration(
-                //                                 hintText: "1",
-                //                                 hintStyle: AppStyle
-                //                                     .sfproDisplay14w400Gray5),
-                //                             maxLines: 1,
-                //                             inputFormatters: [
-                //                               numthreeformatter
-                //                             ],
-                //                             style: AppStyle
-                //                                 .sfproDisplay14w400Black,
-                //                           ),
-                //                         )
-                //                       ],
-                //                     )),
-                //                     SizedBox(
-                //                       width: 15,
-                //                     ),
-                //                     Expanded(
-                //                         child: Column(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.start,
-                //                       children: [
-                //                         Text(
-                //                           "Qavat",
-                //                           style: AppStyle
-                //                               .sfproDisplay14w400Black
-                //                               .copyWith(fontSize: 12),
-                //                         ),
-                //                         Container(
-                //                           height: 40,
-                //                           child: TextField(
-                //                             maxLines: 1,
-                //                             inputFormatters: [
-                //                               numthreeformatter
-                //                             ],
-                //                             decoration: InputDecoration(
-                //                                 hintText: "4",
-                //                                 hintStyle: AppStyle
-                //                                     .sfproDisplay14w400Gray5),
-                //                             style: AppStyle
-                //                                 .sfproDisplay14w400Black,
-                //                           ),
-                //                         )
-                //                       ],
-                //                     )),
-                //                     SizedBox(
-                //                       width: 15,
-                //                     ),
-                //                     Expanded(
-                //                         child: Column(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.start,
-                //                       children: [
-                //                         Text(
-                //                           "Xonadon",
-                //                           style: AppStyle
-                //                               .sfproDisplay14w400Black
-                //                               .copyWith(fontSize: 12),
-                //                         ),
-                //                         Container(
-                //                           height: 40,
-                //                           child: TextField(
-                //                             decoration: InputDecoration(
-                //                                 hintText: "56",
-                //                                 hintStyle: AppStyle
-                //                                     .sfproDisplay14w400Gray5),
-                //                             maxLines: 1,
-                //                             inputFormatters: [
-                //                               numthreeformatter
-                //                             ],
-                //                             style: AppStyle
-                //                                 .sfproDisplay14w400Black,
-                //                           ),
-                //                         )
-                //                       ],
-                //                     )),
-                //                     SizedBox(
-                //                       width: 12,
-                //                     ),
-                //                   ],
-                //                 ),
-                //               ),
-                //               SizedBox(
-                //                 height: 14,
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //         Container(
-                //           color: AppColor.Gray1,
-                //           child: Column(
-                //             children: [
-                //               SizedBox(
-                //                 height: 15,
-                //               ),
-                //               Container(
-                //                 decoration: BoxDecoration(
-                //                   color: AppColor.White,
-                //                   borderRadius: BorderRadius.circular(14),
-                //                 ),
-                //                 margin: EdgeInsets.symmetric(horizontal: 12),
-                //                 child: Padding(
-                //                   padding: const EdgeInsets.all(3.0),
-                //                   child: Row(
-                //                     mainAxisAlignment: MainAxisAlignment.center,
-                //                     crossAxisAlignment:
-                //                         CrossAxisAlignment.center,
-                //                     children: [
-                //                       Expanded(
-                //                         child: InkWell(
-                //                           onTap: () {
-                //                             isForChild = true;
-                //                             setState(() {});
-                //                           },
-                //                           child: Container(
-                //                             decoration: BoxDecoration(
-                //                               borderRadius:
-                //                                   BorderRadius.circular(12),
-                //                               color: isForChild
-                //                                   ? AppColor.Gray1
-                //                                   : AppColor.White,
-                //                             ),
-                //                             child: Padding(
-                //                               padding:
-                //                                   const EdgeInsets.symmetric(
-                //                                       vertical: 10.0),
-                //                               child: Center(
-                //                                 child: Text(
-                //                                   "Bolalar uchun",
-                //                                   style: AppStyle
-                //                                       .sfproDisplay14w400Black,
-                //                                 ),
-                //                               ),
-                //                             ),
-                //                           ),
-                //                         ),
-                //                       ),
-                //                       Expanded(
-                //                         child: InkWell(
-                //                           onTap: () {
-                //                             isForChild = false;
-                //                             setState(() {});
-                //                           },
-                //                           child: Container(
-                //                             margin: EdgeInsets.all(2),
-                //                             decoration: BoxDecoration(
-                //                               borderRadius:
-                //                                   BorderRadius.circular(12),
-                //                               color: !isForChild
-                //                                   ? AppColor.Gray1
-                //                                   : AppColor.White,
-                //                             ),
-                //                             child: Padding(
-                //                               padding:
-                //                                   const EdgeInsets.symmetric(
-                //                                       vertical: 10.0),
-                //                               child: Center(
-                //                                 child: Text(
-                //                                   "Kattalar uchun",
-                //                                   style: AppStyle
-                //                                       .sfproDisplay14w400Black,
-                //                                 ),
-                //                               ),
-                //                             ),
-                //                           ),
-                //                         ),
-                //                       )
-                //                     ],
-                //                   ),
-                //                 ),
-                //               ),
-                //               SizedBox(
-                //                 height: 12,
-                //               ),
-                //               Container(
-                //                 decoration: BoxDecoration(
-                //                   color: AppColor.White,
-                //                   borderRadius: BorderRadius.circular(14),
-                //                 ),
-                //                 margin: EdgeInsets.symmetric(horizontal: 12),
-                //                 child: Padding(
-                //                   padding: const EdgeInsets.all(4.0),
-                //                   child: Row(
-                //                     mainAxisAlignment: MainAxisAlignment.center,
-                //                     crossAxisAlignment:
-                //                         CrossAxisAlignment.center,
-                //                     children: [
-                //                       Expanded(
-                //                         child: InkWell(
-                //                           onTap: () {
-                //                             current = 0;
-                //                             setState(() {});
-                //                           },
-                //                           child: Container(
-                //                             decoration: BoxDecoration(
-                //                               borderRadius:
-                //                                   BorderRadius.circular(12),
-                //                               color: current == 0
-                //                                   ? AppColor.Gray1
-                //                                   : AppColor.White,
-                //                             ),
-                //                             child: Padding(
-                //                               padding:
-                //                                   const EdgeInsets.symmetric(
-                //                                       vertical: 10.0),
-                //                               child: Center(
-                //                                 child: Text(
-                //                                   "Farqi yo’q",
-                //                                   style: AppStyle
-                //                                       .sfproDisplay14w400Black,
-                //                                 ),
-                //                               ),
-                //                             ),
-                //                           ),
-                //                         ),
-                //                       ),
-                //                       Expanded(
-                //                         child: InkWell(
-                //                           onTap: () {
-                //                             current = 1;
-                //                             setState(() {});
-                //                           },
-                //                           child: Container(
-                //                             decoration: BoxDecoration(
-                //                               borderRadius:
-                //                                   BorderRadius.circular(12),
-                //                               color: current == 1
-                //                                   ? AppColor.Gray1
-                //                                   : AppColor.White,
-                //                             ),
-                //                             child: Center(
-                //                               child: Padding(
-                //                                 padding:
-                //                                     const EdgeInsets.symmetric(
-                //                                         vertical: 10.0),
-                //                                 child: Row(
-                //                                   mainAxisAlignment:
-                //                                       MainAxisAlignment.center,
-                //                                   crossAxisAlignment:
-                //                                       CrossAxisAlignment.center,
-                //                                   children: [
-                //                                     SvgPicture.asset(
-                //                                         AppImages.maleIcon),
-                //                                     Text(
-                //                                       "Erkak",
-                //                                       style: AppStyle
-                //                                           .sfproDisplay14w400Black,
-                //                                     ),
-                //                                   ],
-                //                                 ),
-                //                               ),
-                //                             ),
-                //                           ),
-                //                         ),
-                //                       ),
-                //                       Expanded(
-                //                         child: InkWell(
-                //                           onTap: () {
-                //                             current = 2;
-                //                             setState(() {});
-                //                           },
-                //                           child: Container(
-                //                             decoration: BoxDecoration(
-                //                               color: current == 2
-                //                                   ? AppColor.Gray1
-                //                                   : AppColor.White,
-                //                               borderRadius:
-                //                                   BorderRadius.circular(12),
-                //                             ),
-                //                             child: Padding(
-                //                               padding:
-                //                                   const EdgeInsets.symmetric(
-                //                                       vertical: 10.0),
-                //                               child: Center(
-                //                                 child: Row(
-                //                                   mainAxisAlignment:
-                //                                       MainAxisAlignment.center,
-                //                                   crossAxisAlignment:
-                //                                       CrossAxisAlignment.center,
-                //                                   children: [
-                //                                     SvgPicture.asset(
-                //                                         AppImages.femaleIcon),
-                //                                     Text(
-                //                                       "Ayol",
-                //                                       style: AppStyle
-                //                                           .sfproDisplay14w400Black,
-                //                                     ),
-                //                                   ],
-                //                                 ),
-                //                               ),
-                //                             ),
-                //                           ),
-                //                         ),
-                //                       )
-                //                     ],
-                //                   ),
-                //                 ),
-                //               ),
-                //               SizedBox(
-                //                 height: 14,
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //         Container(
-                //           color: AppColor.White,
-                //           child: Column(
-                //             children: [
-                //               SizedBox(
-                //                 height: 12,
-                //               ),
-                //               Row(
-                //                 children: [
-                //                   SizedBox(
-                //                     width: 12,
-                //                   ),
-                //                   Expanded(
-                //                       child: Container(
-                //                     height: 50,
-                //                     decoration: BoxDecoration(
-                //                       color: AppColor.Gray1,
-                //                       borderRadius: BorderRadius.circular(14),
-                //                     ),
-                //                     child: Row(
-                //                       crossAxisAlignment:
-                //                           CrossAxisAlignment.center,
-                //                       children: [
-                //                         SizedBox(
-                //                           width: 12,
-                //                         ),
-                //                         Column(
-                //                           crossAxisAlignment:
-                //                               CrossAxisAlignment.start,
-                //                           children: [
-                //                             Spacer(),
-                //                             Text(
-                //                               "Tibbiy karta",
-                //                               style: AppStyle
-                //                                   .sfproDisplay14w400Gray5
-                //                                   .copyWith(
-                //                                       fontSize: 12,
-                //                                       color: AppColor.Gray4),
-                //                             ),
-                //                             Text(
-                //                               "O’zim uchun",
-                //                               style:
-                //                                   AppStyle.sfproDisplay15Black,
-                //                             ),
-                //                             Spacer(),
-                //                           ],
-                //                         ),
-                //                         Spacer(),
-                //                         Icon(
-                //                           Icons.arrow_forward_ios,
-                //                           color: AppColor.Black,
-                //                           size: 20,
-                //                         ),
-                //                         SizedBox(
-                //                           width: 8,
-                //                         )
-                //                       ],
-                //                     ),
-                //                   )),
-                //                   SizedBox(
-                //                     width: 12,
-                //                   ),
-                //                   Expanded(
-                //                       child: Container(
-                //                     height: 50,
-                //                     decoration: BoxDecoration(
-                //                         color: AppColor.White,
-                //                         borderRadius: BorderRadius.circular(14),
-                //                         border: Border.all(
-                //                             color: AppColor.BlueMain,
-                //                             width: 0.4)),
-                //                     child: Center(
-                //                       child: Column(
-                //                         crossAxisAlignment:
-                //                             CrossAxisAlignment.center,
-                //                         mainAxisAlignment:
-                //                             MainAxisAlignment.center,
-                //                         children: [
-                //                           Text(
-                //                             "Umumiy summa",
-                //                             style: AppStyle
-                //                                 .sfproDisplay14w400Black
-                //                                 .copyWith(fontSize: 12),
-                //                           ),
-                //                           Text(
-                //                             "100 000 сум",
-                //                             style: AppStyle.sfproDisplay16Black
-                //                                 .copyWith(
-                //                                     color: AppColor.BlueMain,
-                //                                     fontWeight:
-                //                                         FontWeight.w600),
-                //                           )
-                //                         ],
-                //                       ),
-                //                     ),
-                //                   )),
-                //                   SizedBox(
-                //                     width: 12,
-                //                   ),
-                //                 ],
-                //               ),
-                //               SizedBox(
-                //                 height: 12,
-                //               ),
-                //               Row(children: [
-                //                 SizedBox(
-                //                   width: 15,
-                //                 ),
-                //                 SvgPicture.asset(
-                //                   AppImages.moneyic,
-                //                   width: 35,
-                //                   height: 35,
-                //                 ),
-                //                 SizedBox(
-                //                   width: 16,
-                //                 ),
-                //                 Expanded(
-                //                   child: InkWell(
-                //                     borderRadius: BorderRadius.circular(20),
-                //                     onTap: () {
-                //                       nextPage();
-                //                       currentPage = 1;
-                //                       setState(() {});
-                //                       skipLoading();
-                //                     },
-                //                     child: Container(
-                //                       height: 50,
-                //                       decoration: BoxDecoration(
-                //                         color: AppColor.BlueMain,
-                //                         borderRadius: BorderRadius.circular(20),
-                //                       ),
-                //                       child: Center(
-                //                         child: Text(
-                //                           "Buyurtma Berish",
-                //                           style: AppStyle.sfproDisplay15Black
-                //                               .copyWith(
-                //                             color: AppColor.White,
-                //                           ),
-                //                         ),
-                //                       ),
-                //                     ),
-                //                   ),
-                //                 ),
-                //                 SizedBox(
-                //                   width: 16,
-                //                 ),
-                //                 SvgPicture.asset(
-                //                   AppImages.filteric,
-                //                   width: 35,
-                //                   height: 35,
-                //                 ),
-                //                 SizedBox(
-                //                   width: 15,
-                //                 ),
-                //               ]),
-                //               SizedBox(
-                //                 height: 10,
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   decoration: BoxDecoration(
-                //     color: AppColor.White,
-                //     borderRadius: BorderRadius.only(
-                //       topLeft: Radius.circular(30),
-                //       topRight: Radius.circular(30),
-                //     ),
-                //   ),
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.center,
-                //     mainAxisAlignment: MainAxisAlignment.start,
-                //     children: [
-                //       SizedBox(
-                //         height: 27,
-                //       ),
-                //       Container(
-                //         width: 65,
-                //         height: 65,
-                //         child: CircularProgressIndicator(
-                //           color: AppColor.BlueMain,
-                //           strokeWidth: 8,
-                //           backgroundColor: AppColor.BlueLight,
-                //         ),
-                //       ),
-                //       SizedBox(
-                //         height: 24,
-                //       ),
-                //       Text(
-                //         "Vrach Terapevt qidirilmoqda!",
-                //         style: AppStyle.sfProDisplay22w600.copyWith(
-                //             fontWeight: FontWeight.w500,
-                //             fontSize: 18,
-                //             fontStyle: FontStyle.normal),
-                //       ),
-                //       SizedBox(
-                //         height: 12,
-                //       ),
-                //       Text(
-                //         "Ushbu amaliyotga  1-2 daqiqagacha\nvaqt ketishi mumkin, iltimos ozgina\nkutib turing!",
-                //         style: AppStyle.sfproDisplay16Black
-                //             .copyWith(fontSize: 14, color: AppColor.Gray5),
-                //         textAlign: TextAlign.center,
-                //       ),
-                //       SizedBox(
-                //         height: 24,
-                //       ),
-                //       Container(
-                //         width: 55,
-                //         height: 55,
-                //         decoration: BoxDecoration(
-                //           shape: BoxShape.circle,
-                //           color: AppColor.Gray1,
-                //         ),
-                //         child: Center(
-                //           child: Icon(
-                //             Icons.close,
-                //             color: AppColor.Black,
-                //           ),
-                //         ),
-                //       ),
-                //       SizedBox(
-                //         height: 6,
-                //       ),
-                //       Text(
-                //         "Bekor qilish",
-                //         style: AppStyle.sfproDisplay14w400Gray5.copyWith(
-                //           fontSize: 12,
-                //           color: AppColor.Gray4,
-                //         ),
-                //       )
-                //     ],
-                //   ),
-                // ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.White,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(),
+                    child: ListView(
+                      children: [
+                        Container(
+                          color: AppColor.White,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 13.5,
+                                  top: 5,
+                                ),
+                                child: Text('Kichik tibbiy hodim chaqirish',
+                                    style: AppStyle.sfproDisplay18Black
+                                        .copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16)),
+                              ),
+                              SizedBox(
+                                height: 16,
+                              ),
+                              Container(
+                                width: double.infinity,
+                                margin: EdgeInsets.symmetric(horizontal: 12.5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(14),
+                                    color: Color(0xffF0F6FE)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 14.0),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 14,
+                                      ),
+                                      Icon(
+                                        Icons.location_on,
+                                        color: AppColor.Black,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          maxLines: 1,
+                                          '${locationDetails!['city']}, ${locationDetails!['address']}',
+                                          style: AppStyle.sfproDisplay16Black
+                                              .copyWith(
+                                                  fontSize: 15.5,
+                                                  overflow:
+                                                      TextOverflow.ellipsis),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 18,
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 10),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 12,
+                                    ),
+                                    Expanded(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Podyezd",
+                                          style: AppStyle
+                                              .sfproDisplay14w400Black
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                        Container(
+                                          height: 40,
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                hintText: "1",
+                                                hintStyle: AppStyle
+                                                    .sfproDisplay14w400Gray5),
+                                            maxLines: 1,
+                                            inputFormatters: [
+                                              numthreeformatter
+                                            ],
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black,
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Expanded(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Qavat",
+                                          style: AppStyle
+                                              .sfproDisplay14w400Black
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                        Container(
+                                          height: 40,
+                                          child: TextField(
+                                            maxLines: 1,
+                                            inputFormatters: [
+                                              numthreeformatter
+                                            ],
+                                            decoration: InputDecoration(
+                                                hintText: "4",
+                                                hintStyle: AppStyle
+                                                    .sfproDisplay14w400Gray5),
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black,
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Expanded(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Xonadon",
+                                          style: AppStyle
+                                              .sfproDisplay14w400Black
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                        Container(
+                                          height: 40,
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                                hintText: "56",
+                                                hintStyle: AppStyle
+                                                    .sfproDisplay14w400Gray5),
+                                            maxLines: 1,
+                                            inputFormatters: [
+                                              numthreeformatter
+                                            ],
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black,
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                                    SizedBox(
+                                      width: 12,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 14,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          color: AppColor.Gray1,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: AppColor.White,
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                margin: EdgeInsets.symmetric(horizontal: 12),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            isForChild = true;
+                                            setState(() {});
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: isForChild
+                                                  ? AppColor.Gray1
+                                                  : AppColor.White,
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10.0),
+                                              child: Center(
+                                                child: Text(
+                                                  "Bolalar uchun",
+                                                  style: AppStyle
+                                                      .sfproDisplay14w400Black,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            isForChild = false;
+                                            setState(() {});
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.all(2),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: !isForChild
+                                                  ? AppColor.Gray1
+                                                  : AppColor.White,
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10.0),
+                                              child: Center(
+                                                child: Text(
+                                                  "Kattalar uchun",
+                                                  style: AppStyle
+                                                      .sfproDisplay14w400Black,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: AppColor.White,
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                margin: EdgeInsets.symmetric(horizontal: 12),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            current = 0;
+                                            setState(() {});
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: current == 0
+                                                  ? AppColor.Gray1
+                                                  : AppColor.White,
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10.0),
+                                              child: Center(
+                                                child: Text(
+                                                  "Farqi yo’q",
+                                                  style: AppStyle
+                                                      .sfproDisplay14w400Black,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            current = 1;
+                                            setState(() {});
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: current == 1
+                                                  ? AppColor.Gray1
+                                                  : AppColor.White,
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 10.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                        AppImages.maleIcon),
+                                                    Text(
+                                                      "Erkak",
+                                                      style: AppStyle
+                                                          .sfproDisplay14w400Black,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            current = 2;
+                                            setState(() {});
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: current == 2
+                                                  ? AppColor.Gray1
+                                                  : AppColor.White,
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10.0),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                        AppImages.femaleIcon),
+                                                    Text(
+                                                      "Ayol",
+                                                      style: AppStyle
+                                                          .sfproDisplay14w400Black,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 14,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          color: AppColor.White,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Expanded(
+                                      child: Container(
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.Gray1,
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 12,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Spacer(),
+                                            Text(
+                                              "Tibbiy karta",
+                                              style: AppStyle
+                                                  .sfproDisplay14w400Gray5
+                                                  .copyWith(
+                                                      fontSize: 12,
+                                                      color: AppColor.Gray4),
+                                            ),
+                                            Text(
+                                              "O’zim uchun",
+                                              style:
+                                                  AppStyle.sfproDisplay15Black,
+                                            ),
+                                            Spacer(),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: AppColor.Black,
+                                          size: 20,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        )
+                                      ],
+                                    ),
+                                  )),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Expanded(
+                                      child: Container(
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                        color: AppColor.White,
+                                        borderRadius: BorderRadius.circular(14),
+                                        border: Border.all(
+                                            color: AppColor.BlueMain,
+                                            width: 0.4)),
+                                    child: Center(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Umumiy summa",
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black
+                                                .copyWith(fontSize: 12),
+                                          ),
+                                          Text(
+                                            "100 000 сум",
+                                            style: AppStyle.sfproDisplay16Black
+                                                .copyWith(
+                                                    color: AppColor.BlueMain,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Row(children: [
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                SvgPicture.asset(
+                                  AppImages.moneyic,
+                                  width: 35,
+                                  height: 35,
+                                ),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(20),
+                                    onTap: () {
+                                      nextPage();
+                                      currentPage = 1;
+                                      setState(() {});
+                                      skipLoading();
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: AppColor.BlueMain,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "Buyurtma Berish",
+                                          style: AppStyle.sfproDisplay15Black
+                                              .copyWith(
+                                            color: AppColor.White,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                SvgPicture.asset(
+                                  AppImages.filteric,
+                                  width: 35,
+                                  height: 35,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              ]),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.White,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 27,
+                      ),
+                      Container(
+                        width: 65,
+                        height: 65,
+                        child: CircularProgressIndicator(
+                          color: AppColor.BlueMain,
+                          strokeWidth: 8,
+                          backgroundColor: AppColor.BlueLight,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Text(
+                        "Vrach Terapevt qidirilmoqda!",
+                        style: AppStyle.sfProDisplay22w600.copyWith(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Text(
+                        "Ushbu amaliyotga  1-2 daqiqagacha\nvaqt ketishi mumkin, iltimos ozgina\nkutib turing!",
+                        style: AppStyle.sfproDisplay16Black
+                            .copyWith(fontSize: 14, color: AppColor.Gray5),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Container(
+                        width: 55,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColor.Gray1,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.close,
+                            color: AppColor.Black,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        "Bekor qilish",
+                        style: AppStyle.sfproDisplay14w400Gray5.copyWith(
+                          fontSize: 12,
+                          color: AppColor.Gray4,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -814,7 +816,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                             child: Text('30-40 daqiqada uyingizda bo’ladi.',
                                 style: AppStyle.sfproDisplay18Black.copyWith(
                                     fontWeight: FontWeight.w500,
-                                    fontSize: Device.get().isAndroid ? 17 : 19)),
+                                    fontSize:
+                                        Device.get().isAndroid ? 17 : 19)),
                           ),
                           SizedBox(
                             height: 13,
@@ -838,7 +841,7 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                             height: 24,
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               showDoctorInfo(context);
                             },
                             child: Container(
@@ -887,7 +890,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                                           fontSize: 12,
                                                           fontWeight:
                                                               FontWeight.w500,
-                                                          color: AppColor.Black),
+                                                          color:
+                                                              AppColor.Black),
                                                 )
                                               ],
                                             ),
@@ -900,23 +904,28 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                     width: 4,
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
                                         "Eshonov Fakhriyor",
                                         style: AppStyle.sfproDisplay15Black
-                                            .copyWith(fontWeight: FontWeight.w500),
+                                            .copyWith(
+                                                fontWeight: FontWeight.w500),
                                       ),
                                       Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(
                                             "Terapevt ",
-                                            style: AppStyle.sfproDisplay14w400Black
-                                                .copyWith(color: AppColor.Gray5),
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black
+                                                .copyWith(
+                                                    color: AppColor.Gray5),
                                           ),
                                           SizedBox(
                                             width: 4,
@@ -934,8 +943,10 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                           ),
                                           Text(
                                             "10 yil tajriba ",
-                                            style: AppStyle.sfproDisplay14w400Black
-                                                .copyWith(color: AppColor.Gray5),
+                                            style: AppStyle
+                                                .sfproDisplay14w400Black
+                                                .copyWith(
+                                                    color: AppColor.Gray5),
                                           ),
                                         ],
                                       )
@@ -994,17 +1005,22 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                             children: [
                               Column(
                                 children: [
-                                  Container(
-                                    width: 55,
-                                    height: 55,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColor.BlueMain,
-                                    ),
-                                    child: Center(
-                                      child: Icon(
-                                        Icons.phone,
-                                        color: AppColor.White,
+                                  GestureDetector(
+                                    onTap: () {
+                                      openScreen(context, MedicalExaminationScreen());
+                                    },
+                                    child: Container(
+                                      width: 55,
+                                      height: 55,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColor.BlueMain,
+                                      ),
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.phone,
+                                          color: AppColor.White,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -1013,8 +1029,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                   ),
                                   Text(
                                     "Qo’ng’iron qilish",
-                                    style:
-                                        AppStyle.sfproDisplay14w400Gray5.copyWith(
+                                    style: AppStyle.sfproDisplay14w400Gray5
+                                        .copyWith(
                                       fontSize: 12,
                                       color: AppColor.Gray4,
                                     ),
@@ -1045,8 +1061,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                   ),
                                   Text(
                                     "Bekor qilish",
-                                    style:
-                                        AppStyle.sfproDisplay14w400Gray5.copyWith(
+                                    style: AppStyle.sfproDisplay14w400Gray5
+                                        .copyWith(
                                       fontSize: 12,
                                       color: AppColor.Gray4,
                                     ),
@@ -1055,7 +1071,9 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                               )
                             ],
                           ),
-                          SizedBox(height: 18,)
+                          SizedBox(
+                            height: 18,
+                          ),
                         ]),
                   ),
                 ),
@@ -1112,14 +1130,6 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
           ),
       ],
     ));
-  }
-
-// Simulated route points
-  List<Point> _getRoutePoints() {
-    return [
-      currentPosition,
-      endPoint,
-    ];
   }
 
   void nextPage() {

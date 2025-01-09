@@ -13,6 +13,7 @@ static const String notification='assets/icons/notification.svg';
 static const String menu='assets/icons/menu.svg';
 static const String loginpic='assets/images/loginpic.png';
 static const String blackLocation='assets/icons/blacklocation.svg';
+static const String operator='assets/icons/operator.svg';
 static const String moneyic='assets/icons/money.svg';
 static const String filteric='assets/icons/filter.svg';
 static const String currentloc='assets/icons/currentloc.svg';

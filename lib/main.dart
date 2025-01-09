@@ -6,11 +6,13 @@ import 'package:doctorly/presentation/ui/screens/auth/login_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/register_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/verify_screen.dart';
 import 'package:doctorly/presentation/ui/screens/massaj/choose_massaj.dart';
+import 'package:doctorly/presentation/ui/screens/med_card/medcard_screen.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/choose_services.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/location_page.dart';
 import 'package:doctorly/presentation/ui/screens/main/main_screen.dart';
 import 'package:doctorly/presentation/ui/screens/onboarding/introduction_screen.dart';
+import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/medical_examination_screen.dart';
 import 'package:doctorly/utils/my_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -83,7 +85,7 @@ class MyApp extends StatelessWidget {
                     ),
                     home: token != null && token.isNotEmpty
                         ? MainScreen()
-                  : CurrentLocationScreen());
+                  : MedcardScreen());
                 },
               ),
             );

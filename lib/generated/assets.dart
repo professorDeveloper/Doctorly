@@ -17,6 +17,7 @@ class Assets {
   static const String iconsMenu = 'assets/icons/menu.svg';
   static const String iconsMoney = 'assets/icons/money.svg';
   static const String iconsNotification = 'assets/icons/notification.svg';
+  static const String iconsOperator = 'assets/icons/operator.svg';
   static const String iconsServicesvg = 'assets/icons/servicesvg.svg';
   static const String imagesConsulation = 'assets/images/consulation.png';
   static const String imagesDiscount = 'assets/images/discount.png';

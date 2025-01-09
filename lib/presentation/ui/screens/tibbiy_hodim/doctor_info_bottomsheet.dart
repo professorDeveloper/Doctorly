@@ -19,10 +19,12 @@ void showDoctorInfo(BuildContext context) {
     builder: (context) => FractionallySizedBox(
       heightFactor: 0.95,
       child: Container(
-        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          physics: BouncingScrollPhysics(),
+          child: Column(children: [
+            SizedBox(
+              height: 12,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Stack(
@@ -109,71 +111,94 @@ void showDoctorInfo(BuildContext context) {
                 )
               ],
             ),
-            SizedBox(height: 24,),
-            ExpandableText(
-              maxLines: 6,
-              linkColor: AppColor.BlueMain,
+            SizedBox(
+              height: 24,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: ExpandableText(
+                textAlign: TextAlign.start,
+                maxLines: 6,
+                linkColor: AppColor.BlueMain,
                 "Lorem Ipsum is simply dummy text of the printing\nand typesetting industry. Lorem Ipsum has been the\nindustry's standard dummy text ever since the\n1500s, when an unknown printer took a galley of\ntype and scrambled it to make a type specimen\nbook. It has survived not only five centuries\nLorem Ipsum is simply dummy text of the printing\nand typesetting industry. Lorem Ipsum has been the\nindustry's standard dummy text ever since the\n1500s, when an unknown printer took a galley of\ntype and scrambled it to make a type specimen\nbook. It has survived not only five centuries",
-            style: AppStyle.sfproDisplay16Gray5, expandText: 'Yana',),
-                SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-                      decoration: ShapeDecoration(
-                        color: Color(0xFF007BFF),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Umumiy ma’lumotlar',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontFamily: 'SF Pro Display',
-                              fontWeight: FontWeight.w500,
-                              height: 1.40,
-                            ),
-                          ),
-                        ],
+                style: AppStyle.sfproDisplay16Gray5.copyWith(fontSize: 17),
+                expandText: 'Yana',
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                children: [
+                  Container(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                    decoration: ShapeDecoration(
+                      color: Color(0xFF007BFF),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-                      decoration: ShapeDecoration(
-                        color: Color(0xFFF3F5F7),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Izohlar (589)',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: 'SF Pro Display',
-                              fontWeight: FontWeight.w500,
-                              height: 1.40,
-                            ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Umumiy ma’lumotlar',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                            height: 1.40,
                           ),
-                        ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Container(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                    decoration: ShapeDecoration(
+                      color: Color(0xFFF3F5F7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 18,),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Izohlar (589)',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                            height: 1.40,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 18,
+            ),
+            Column(
+              children: [
                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -267,10 +292,565 @@ void showDoctorInfo(BuildContext context) {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 18,
+                      ),
                     ],
                   ),
                 ),
-                C
+              ],
+            ),
+            Container(
+              color: AppColor.Gray1,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 12, right: 16),
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Text(
+                          'Pediator mutaxassisligi',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  'Tajribasi',
+                                  style: TextStyle(
+                                    color: Color(0xFF5E646B),
+                                    fontSize: 14,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.40,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  '12 yil',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.40,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          width: double.infinity,
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                width: 0.5,
+                                strokeAlign: BorderSide.strokeAlignCenter,
+                                color: Color(0xFFE6F2FF),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                        Text(
+                          'Sohaga tegishli ma’lumotlari',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFF3F5F7),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  'Bakalavr',
+                                  style: TextStyle(
+                                    color: Color(0xFF5E646B),
+                                    fontSize: 14,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.40,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'Toshkent Shahar Tibbiyor Universiteti',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontFamily: 'SF Pro Display',
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.40,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 4),
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '12-Avgust 2020 - 12-Avgust 2024',
+                                      style: TextStyle(
+                                        color: Color(0xFF5E646B),
+                                        fontSize: 12,
+                                        fontFamily: 'SF Pro Display',
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.40,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 12, right: 16),
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Text(
+                          'Terapevt',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  'Tajribasi',
+                                  style: TextStyle(
+                                    color: Color(0xFF5E646B),
+                                    fontSize: 14,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.40,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  '12 yil',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.40,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          width: double.infinity,
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                width: 0.5,
+                                strokeAlign: BorderSide.strokeAlignCenter,
+                                color: Color(0xFFE6F2FF),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                        Text(
+                          'Sohaga tegishli ma’lumotlari',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: ShapeDecoration(
+                            color: Color(0xFFF3F5F7),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  'Bakalavr',
+                                  style: TextStyle(
+                                    color: Color(0xFF5E646B),
+                                    fontSize: 14,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.40,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'Toshkent Shahar Tibbiyor Universiteti',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontFamily: 'SF Pro Display',
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.40,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 4),
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '12-Avgust 2020 - 12-Avgust 2024',
+                                      style: TextStyle(
+                                        color: Color(0xFF5E646B),
+                                        fontSize: 12,
+                                        fontFamily: 'SF Pro Display',
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.40,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 12, right: 16),
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(topRight: Radius.circular(18),
+                            topLeft: Radius.circular(18),)
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Text(
+                          'Ish joylari',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 18,
+                        ),
+                        Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Cosmed',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'SF Pro Display',
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.40,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Text(
+                                            'Toshkent Shahar, Yunusobod, Mustaqillik ko’chasi 45',
+                                            style: TextStyle(
+                                              color: Color(0xFF5E646B),
+                                              fontSize: 14,
+                                              fontFamily: 'SF Pro Display',
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.40,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12, vertical: 4),
+                                            decoration: ShapeDecoration(
+                                              shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    width: 1,
+                                                    color: Color(0xFFE6F2FF)),
+                                                borderRadius:
+                                                BorderRadius.circular(50),
+                                              ),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: [
+                                                Text.rich(
+                                                  TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text:
+                                                        '12-Avgust 2020 - ',
+                                                        style: TextStyle(
+                                                          color:
+                                                          Color(0xFF5E646B),
+                                                          fontSize: 12,
+                                                          fontFamily:
+                                                          'SF Pro Display',
+                                                          fontWeight:
+                                                          FontWeight.w400,
+                                                          height: 1.40,
+                                                        ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: 'Hozirgi vaqt',
+                                                        style: TextStyle(
+                                                          color:
+                                                          Color(0xFF007BFF),
+                                                          fontSize: 12,
+                                                          fontFamily:
+                                                          'SF Pro Display',
+                                                          fontWeight:
+                                                          FontWeight.w400,
+                                                          height: 1.40,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Container(
+                                      width: double.infinity,
+                                      decoration: ShapeDecoration(
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                            width: 1,
+                                            strokeAlign:
+                                            BorderSide.strokeAlignCenter,
+                                            color: Color(0xFFE6F2FF),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Container(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Cosmed',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'SF Pro Display',
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.40,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Text(
+                                            'Toshkent Shahar, Yunusobod, Mustaqillik ko’chasi 45',
+                                            style: TextStyle(
+                                              color: Color(0xFF5E646B),
+                                              fontSize: 14,
+                                              fontFamily: 'SF Pro Display',
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.40,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12, vertical: 4),
+                                            decoration: ShapeDecoration(
+                                              shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    width: 1,
+                                                    color: Color(0xFFE6F2FF)),
+                                                borderRadius:
+                                                BorderRadius.circular(50),
+                                              ),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  '12-Avgust 2020 - 12-Avgust 2024',
+                                                  style: TextStyle(
+                                                    color: Color(0xFF5E646B),
+                                                    fontSize: 12,
+                                                    fontFamily:
+                                                    'SF Pro Display',
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.40,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height: 18,),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ]),
         ),
       ),
