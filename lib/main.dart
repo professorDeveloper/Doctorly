@@ -6,6 +6,8 @@ import 'package:doctorly/presentation/ui/screens/auth/login_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/register_screen.dart';
 import 'package:doctorly/presentation/ui/screens/auth/verify_screen.dart';
 import 'package:doctorly/presentation/ui/screens/massaj/choose_massaj.dart';
+import 'package:doctorly/presentation/ui/screens/med_card/add_medcard.dart';
+import 'package:doctorly/presentation/ui/screens/med_card/medcard_detail_screen.dart';
 import 'package:doctorly/presentation/ui/screens/med_card/medcard_screen.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/choose_services.dart';
@@ -85,7 +87,7 @@ class MyApp extends StatelessWidget {
                     ),
                     home: token != null && token.isNotEmpty
                         ? MainScreen()
-                  : MedcardScreen());
+                  : MainScreen());
                 },
               ),
             );

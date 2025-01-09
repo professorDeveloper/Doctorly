@@ -8,6 +8,7 @@ class Assets {
   static const String fontsSfProDisplayRegular = 'assets/fonts/Sf-Pro-Display-Regular.OTF';
   static const String iconsBlacklocation = 'assets/icons/blacklocation.svg';
   static const String iconsCurrentloc = 'assets/icons/currentloc.svg';
+  static const String iconsEdit = 'assets/icons/edit.svg';
   static const String iconsFemale = 'assets/icons/female.svg';
   static const String iconsFilter = 'assets/icons/filter.svg';
   static const String iconsKapel = 'assets/icons/kapel.svg';
@@ -18,6 +19,7 @@ class Assets {
   static const String iconsMoney = 'assets/icons/money.svg';
   static const String iconsNotification = 'assets/icons/notification.svg';
   static const String iconsOperator = 'assets/icons/operator.svg';
+  static const String iconsProfile = 'assets/icons/profile.svg';
   static const String iconsServicesvg = 'assets/icons/servicesvg.svg';
   static const String imagesConsulation = 'assets/images/consulation.png';
   static const String imagesDiscount = 'assets/images/discount.png';

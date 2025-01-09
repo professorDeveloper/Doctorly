@@ -3,6 +3,7 @@ import 'package:doctorly/core/constants/app_images.dart';
 import 'package:doctorly/core/constants/app_style.dart';
 import 'package:doctorly/main.dart';
 import 'package:doctorly/navigator/navigator.dart';
+import 'package:doctorly/presentation/ui/screens/med_card/medcard_screen.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/apple_maps.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/doctor_info_bottomsheet.dart';
 import 'package:doctorly/presentation/ui/screens/tibbiy_hodim/medical_examination_screen.dart';
@@ -570,50 +571,55 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                     width: 12,
                                   ),
                                   Expanded(
-                                      child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: AppColor.Gray1,
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Spacer(),
-                                            Text(
-                                              "Tibbiy karta",
-                                              style: AppStyle
-                                                  .sfproDisplay14w400Gray5
-                                                  .copyWith(
-                                                      fontSize: 12,
-                                                      color: AppColor.Gray4),
-                                            ),
-                                            Text(
-                                              "O’zim uchun",
-                                              style:
-                                                  AppStyle.sfproDisplay15Black,
-                                            ),
-                                            Spacer(),
-                                          ],
-                                        ),
-                                        Spacer(),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: AppColor.Black,
-                                          size: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 8,
-                                        )
-                                      ],
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          openScreen(context, MedcardScreen());
+                                        },
+                                    child: Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: AppColor.Gray1,
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 12,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Spacer(),
+                                              Text(
+                                                "Tibbiy karta",
+                                                style: AppStyle
+                                                    .sfproDisplay14w400Gray5
+                                                    .copyWith(
+                                                        fontSize: 12,
+                                                        color: AppColor.Gray4),
+                                              ),
+                                              Text(
+                                                "O’zim uchun",
+                                                style: AppStyle
+                                                    .sfproDisplay15Black,
+                                              ),
+                                              Spacer(),
+                                            ],
+                                          ),
+                                          Spacer(),
+                                          Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: AppColor.Black,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   )),
                                   SizedBox(
@@ -1007,7 +1013,8 @@ class _CurrentLocationScreenState extends State<CurrentLocationScreen> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      openScreen(context, MedicalExaminationScreen());
+                                      openScreen(
+                                          context, MedicalExaminationScreen());
                                     },
                                     child: Container(
                                       width: 55,
